@@ -1,26 +1,158 @@
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────────────────────
+   Design tokens — снято с etlgroup.com.ua
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  --color-primary-50:  #fef5eb;
+  --color-primary-100: #fde4c7;
+  --color-primary-400: #f59331;
+  --color-primary-500: #ef7d00;   /* основной акцент */
+  --color-primary-600: #d16e00;
+  --color-primary-700: #a85800;
+
+  --color-ink-500: #6c6d71;       /* вторичный текст */
+  --color-ink-900: #363e4e;       /* футер, тёмные плашки */
+
+  --color-paper-50:  #ffffff;
+  --color-paper-100: #f6f6f6;
+  --color-paper-200: #e5e5e5;     /* цвет смещённой «тени» */
+  --color-paper-300: #d7d7d7;
+  --color-paper-400: #c4c4c4;
+
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --container-site: 1140px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --nav-h: 70px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html { scroll-behavior: smooth; }
+
+body {
+  background: #fff;
+  color: #1f2937;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ──────────────────────────────────────────────────────────────
+   Keyframes — один в один с оригинала
+   ────────────────────────────────────────────────────────────── */
+@keyframes stroke_animation {
+  0%  { stroke-dashoffset: 0; stroke-dasharray: 0 100%;   stroke-width: 1; }
+  to  { stroke-dashoffset: 0; stroke-dasharray: 100% 0;   stroke-width: 1; }
+}
+@keyframes fade-in       { 0% { opacity: 0 } to { opacity: 1 } }
+@keyframes slide-in-left { 0% { transform: translateX(-1000px); opacity: 0 } to { transform: translateX(0); opacity: 1 } }
+@keyframes slide-in-right{ 0% { transform: translateX(1000px);  opacity: 0 } to { transform: translateX(0); opacity: 1 } }
+@keyframes slide-in-bottom{0% { transform: translateY(1000px);  opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+@keyframes heartbeat {
+  0%   { stroke-width: 10; animation-timing-function: ease-out }
+  10%  { stroke-width: 5;  animation-timing-function: ease-in }
+  17%  { stroke-width: 3;  animation-timing-function: ease-out }
+  33%  { stroke-width: 1;  animation-timing-function: ease-in }
+  45%  { stroke-width: 10; animation-timing-function: ease-out }
+}
+
+.fade-in        { animation: fade-in 1.5s cubic-bezier(.215,.61,.355,1) both }
+.slide-in-left  { animation: slide-in-left 1s cubic-bezier(.215,.61,.355,1) both }
+.slide-in-right { animation: slide-in-right 1s cubic-bezier(.215,.61,.355,1) .5s both }
+.slide-in-bottom{ animation: slide-in-bottom 1s cubic-bezier(.25,.46,.45,.94) both }
+
+/* секция скрыта, пока не попала во вьюпорт */
+.animated_section { visibility: hidden }
+.animated_section.is-visible { visibility: visible }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto }
+  .fade-in, .slide-in-left, .slide-in-right, .slide-in-bottom { animation: none }
+  .animated_section { visibility: visible }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Заголовок-призрак: контурный SVG-текст, который «рисуется»
+   ────────────────────────────────────────────────────────────── */
+.ghost-heading text {
+  text-transform: uppercase;
+  font-weight: 800;
+  fill: transparent;
+  stroke: #d1d5db;
+  stroke-width: 1;
+  user-select: none;
+}
+.ghost-heading.is-visible text { animation: stroke_animation 2s ease-in-out }
+.ghost-heading[data-tone="gray"] text { fill: #f6f6f6 }
+.ghost-heading[data-tone="dark"] text { fill: #363e4e; stroke: #6c6d71 }
+.ghost-heading[data-tone="dark"].is-visible text { animation: stroke_animation 3s ease-in-out }
+
+/* ──────────────────────────────────────────────────────────────
+   Рисующаяся линейная сетка / штриховка / точки
+   ────────────────────────────────────────────────────────────── */
+.stroke-draw path,
+.stroke-draw line,
+.stroke-draw polyline,
+.stroke-draw rect {
+  stroke-dasharray: var(--len, 4000);
+  stroke-dashoffset: var(--len, 4000);
+}
+.stroke-draw.is-visible path,
+.stroke-draw.is-visible line,
+.stroke-draw.is-visible polyline,
+.stroke-draw.is-visible rect {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 5s ease-in-out var(--delay, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .stroke-draw path, .stroke-draw line, .stroke-draw polyline, .stroke-draw rect {
+    stroke-dashoffset: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* ──────────────────────────────────────────────────────────────
+     Компоненты
+     ────────────────────────────────────────────────────────────── */
+  .site-container { margin-inline: auto; max-width: var(--container-site); padding: 3.5rem 1rem }
+
+  /* смещённая серая плита под фото — .left-shadow у оригинала */
+  .left-shadow { box-shadow: -40px 40px 2px var(--color-paper-200) }
+  @media (max-width: 767px) { .left-shadow { box-shadow: -16px 16px 2px var(--color-paper-200) } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 20px; border-radius: 6px;
+    font-size: 14px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .02em; line-height: 20px;
+    transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .btn_solid   { background: var(--color-primary-500); color: #fff }
+  .btn_solid:hover   { background: var(--color-primary-600) }
+  .btn_outline { background: #fff; color: var(--color-primary-500); border: 1px solid var(--color-primary-500) }
+  .btn_outline:hover { background: var(--color-primary-500); color: #fff }
+
+  /* кнопка play — контурный круг, при наведении заливается оранжевым */
+  .play_button svg { stroke: #fff; filter: drop-shadow(0 4px 3px rgb(0 0 0/.07)) drop-shadow(0 2px 2px rgb(0 0 0/.06)) }
+  .play_button svg #triangle { fill: #fff }
+  .play_button:hover svg { stroke: var(--color-primary-500) }
+  .play_button:hover svg #triangle { fill: var(--color-primary-500) }
+
+  /* подчёркивание-шторка у пунктов меню */
+  .hvr-shutter { position: relative }
+  .hvr-shutter::after {
+    content: ""; position: absolute; left: 0; bottom: -6px;
+    height: 2px; width: 0; background: var(--color-primary-500);
+    transition: width .25s ease;
+  }
+  .hvr-shutter:hover::after, .hvr-shutter[aria-current="page"]::after { width: 100% }
+
+  /* диагональный срез фона секции */
+  .diagonal-cut { position: relative; overflow: hidden }
+  .diagonal-cut::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background: #fff;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
 }

@@ -34,3 +34,29 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+---
+
+## Что это
+
+Копия структуры, стиля и анимаций сайта etlgroup.com.ua, пересобранная
+на Next.js 16 + Tailwind v4. Тексты — рыба на английском про электромонтаж,
+подлежат замене (см. `OPEN-QUESTIONS.md`).
+
+- Дизайн-система и откуда что взято — `DESIGN.md`
+- Какие фото нужны — `PHOTOS-NEEDED.md`
+- Весь текст в одном месте — `src/lib/content.ts`
+
+## Изоляция
+
+Проект самодостаточный: свой git-репозиторий, свои правила.
+Ничего не тянуть из соседних папок `Projects/*` — ни компонентов, ни контента,
+ни конфигов, ни палитр, ни структур страниц.
+
+## Разработка
+
+```bash
+npm run dev     # http://localhost:3000
+npm run build
+npm run lint
+```
