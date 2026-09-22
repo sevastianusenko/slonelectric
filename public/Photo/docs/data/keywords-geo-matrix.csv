@@ -1,0 +1,137 @@
+city,county,state,keyword,vol_lancaster,vol_usa,cpc_usd
+denver,Lancaster,pa,"electrician denver",10,1600,37.36
+philadelphia,Philadelphia,pa,"electrician philadelphia pa",10,1300,14.92
+philadelphia,Philadelphia,pa,"electricians in philadelphia pa",10,1300,14.92
+philadelphia,Philadelphia,pa,"electrician philadelphia",10,1300,14.92
+baltimore,MD,md,"electrician baltimore md",10,880,18.97
+baltimore,MD,md,"electricians in baltimore md",10,880,18.97
+baltimore,MD,md,"electrician baltimore",10,880,18.97
+columbia,Lancaster,pa,"electrician columbia",10,720,13.92
+wilmington,DE,de,"electrician wilmington",0,720,12.22
+allentown,Lehigh,pa,"electrician allentown pa",10,590,10.68
+allentown,Lehigh,pa,"electricians in allentown pa",10,590,10.68
+allentown,Lehigh,pa,"electrician allentown",10,590,10.68
+york,York,pa,"electrician york pa",10,480,26.38
+york,York,pa,"electricians in york pa",10,480,26.38
+york,York,pa,"electrician york",10,480,26.38
+akron,Lancaster,pa,"electrician akron",10,390,16.72
+west chester,Chester,pa,"electrician west chester pa",10,390,11.33
+west chester,Chester,pa,"electricians in west chester pa",10,390,11.33
+west chester,Chester,pa,"electrician west chester",10,390,11.33
+frederick,MD,md,"electrician frederick md",10,390,21.83
+frederick,MD,md,"electricians in frederick md",10,390,21.83
+frederick,MD,md,"electrician frederick",10,390,21.83
+bethlehem,Northampton,pa,"electrician bethlehem pa",10,260,10.34
+bethlehem,Northampton,pa,"electricians in bethlehem pa",10,260,10.34
+bethlehem,Northampton,pa,"electrician bethlehem",10,260,10.34
+lancaster,Lancaster,pa,"electrician lancaster",50,210,35.87
+lebanon,Lebanon,pa,"electrician lebanon",10,210,18.55
+harrisburg,Dauphin,pa,"electrician harrisburg",10,210,18.4
+wilmington,DE,de,"electrician wilmington de",10,210,23.38
+wilmington,DE,de,"electricians in wilmington de",10,210,23.38
+lancaster,Lancaster,pa,"electrician lancaster pa",110,170,20.29
+lancaster,Lancaster,pa,"electricians in lancaster pa",110,170,20.29
+elizabethtown,Lancaster,pa,"electrician elizabethtown",10,170,18.29
+hanover,York,pa,"electrician hanover pa",10,170,12.94
+hanover,York,pa,"electricians in hanover pa",10,170,12.94
+hanover,York,pa,"electrician hanover",10,170,12.94
+westminster,MD,md,"electrician westminster md",10,170,16.31
+westminster,MD,md,"electricians in westminster md",10,170,16.31
+westminster,MD,md,"electrician westminster",10,170,16.31
+hagerstown,MD,md,"electrician hagerstown md",10,170,13.47
+hagerstown,MD,md,"electricians in hagerstown md",10,170,13.47
+hagerstown,MD,md,"electrician hagerstown",10,170,13.47
+philadelphia,Philadelphia,pa,"electrical contractor philadelphia pa",0,170,8.79
+philadelphia,Philadelphia,pa,"electrical contractors philadelphia pa",0,170,8.79
+reading,Berks,pa,"electrician reading pa",10,140,13.19
+reading,Berks,pa,"electricians in reading pa",10,140,13.19
+mechanicsburg,Cumberland,pa,"electrician mechanicsburg pa",10,140,24.06
+mechanicsburg,Cumberland,pa,"electricians in mechanicsburg pa",10,140,24.06
+mechanicsburg,Cumberland,pa,"electrician mechanicsburg",10,140,24.06
+chambersburg,Franklin,pa,"electrician chambersburg pa",10,140,16.52
+chambersburg,Franklin,pa,"electricians in chambersburg pa",10,140,16.52
+chambersburg,Franklin,pa,"electrician chambersburg",10,140,16.52
+pottstown,Montgomery,pa,"electrician pottstown pa",10,140,18.53
+pottstown,Montgomery,pa,"electricians in pottstown pa",10,140,18.53
+pottstown,Montgomery,pa,"electrician pottstown",10,140,18.53
+bel air,MD,md,"electrician bel air md",10,140,17.13
+bel air,MD,md,"electricians in bel air md",10,140,17.13
+bel air,MD,md,"electrician bel air",10,140,17.13
+middletown,Dauphin,pa,"electrician middletown",0,140,9.24
+lebanon,Lebanon,pa,"electrician lebanon pa",10,110,21.58
+lebanon,Lebanon,pa,"electricians in lebanon pa",10,110,21.58
+harrisburg,Dauphin,pa,"electrician harrisburg pa",10,110,17.48
+harrisburg,Dauphin,pa,"electricians in harrisburg pa",10,110,17.48
+newark,DE,de,"electrician newark de",10,110,27.26
+newark,DE,de,"electricians in newark de",10,110,27.26
+philadelphia,Philadelphia,pa,"emergency electrician philadelphia pa",0,110,40.29
+downingtown,Chester,pa,"electrician downingtown pa",10,90,20.61
+downingtown,Chester,pa,"electricians in downingtown pa",10,90,20.61
+downingtown,Chester,pa,"electrician downingtown",10,90,20.61
+carlisle,Cumberland,pa,"electrician carlisle pa",10,90,9.86
+carlisle,Cumberland,pa,"electricians in carlisle pa",10,90,9.86
+baltimore,MD,md,"electrical contractor baltimore md",10,90,16.58
+baltimore,MD,md,"electrical contractors baltimore md",10,90,16.58
+lancaster,Lancaster,pa,"electrical contractor lancaster pa",50,70,
+lancaster,Lancaster,pa,"electrical contractors lancaster pa",50,70,
+york,York,pa,"electrical contractor york pa",10,70,20.55
+york,York,pa,"electrical contractors york pa",10,70,20.55
+oxford,Chester,pa,"electrician oxford",10,70,24.19
+philadelphia,Philadelphia,pa,"electrician near philadelphia pa",0,70,14.31
+newark,DE,de,"electrician newark",0,70,13.85
+ephrata,Lancaster,pa,"electrician ephrata pa",40,50,15.85
+ephrata,Lancaster,pa,"electricians in ephrata pa",40,50,15.85
+reading,Berks,pa,"electrician reading",10,50,7.44
+palmyra,Lebanon,pa,"electrician palmyra pa",10,50,43.74
+palmyra,Lebanon,pa,"electricians in palmyra pa",10,50,43.74
+palmyra,Lebanon,pa,"electrician palmyra",10,50,43.74
+harrisburg,Dauphin,pa,"electrical contractor harrisburg pa",10,50,7.27
+harrisburg,Dauphin,pa,"electrical contractors harrisburg pa",10,50,7.27
+allentown,Lehigh,pa,"electrical contractor allentown pa",10,50,1.05
+allentown,Lehigh,pa,"electrical contractors allentown pa",10,50,1.05
+lititz,Lancaster,pa,"electrician lititz pa",30,40,25.7
+lititz,Lancaster,pa,"electricians in lititz pa",30,40,25.7
+coatesville,Chester,pa,"electrician coatesville pa",10,40,56.35
+coatesville,Chester,pa,"electricians in coatesville pa",10,40,56.35
+coatesville,Chester,pa,"electrician coatesville",10,40,56.35
+carlisle,Cumberland,pa,"electrician carlisle",10,40,9.15
+reading,Berks,pa,"electrician near reading pa",0,40,1.15
+baltimore,MD,md,"commercial electrician baltimore md",0,40,8.16
+lancaster,Lancaster,pa,"commercial electrician lancaster pa",10,30,
+elizabethtown,Lancaster,pa,"electrician elizabethtown pa",10,20,14.01
+elizabethtown,Lancaster,pa,"electricians in elizabethtown pa",10,20,14.01
+hershey,Dauphin,pa,"electrician hershey pa",10,20,36.72
+hershey,Dauphin,pa,"electricians in hershey pa",10,20,36.72
+hershey,Dauphin,pa,"electrician hershey",10,20,36.72
+camp hill,Cumberland,pa,"electrician camp hill pa",10,20,51.33
+camp hill,Cumberland,pa,"electricians in camp hill pa",10,20,51.33
+gettysburg,Adams,pa,"electrician gettysburg pa",10,20,6.75
+allentown,Lehigh,pa,"commercial electrician allentown pa",0,20,
+columbia,Lancaster,pa,"electrician columbia pa",10,10,55.61
+manheim,Lancaster,pa,"electrician manheim",10,10,
+reading,Berks,pa,"electrical contractor reading pa",10,10,
+reading,Berks,pa,"electrical contractors reading pa",10,10,
+lebanon,Lebanon,pa,"electrical contractor lebanon pa",10,10,
+lebanon,Lebanon,pa,"electrical contractors lebanon pa",10,10,
+myerstown,Lebanon,pa,"electricians in myerstown pa",10,10,
+york,York,pa,"commercial electrician york pa",10,10,
+harrisburg,Dauphin,pa,"commercial electrician harrisburg pa",10,10,1.15
+harrisburg,Dauphin,pa,"emergency electrician harrisburg pa",10,10,
+west chester,Chester,pa,"electrical contractor west chester pa",10,10,43.57
+west chester,Chester,pa,"electrical contractors west chester pa",10,10,43.57
+oxford,Chester,pa,"electrician oxford pa",10,10,
+oxford,Chester,pa,"electricians in oxford pa",10,10,
+camp hill,Cumberland,pa,"electrician camp hill",10,10,7.72
+kutztown,Berks,pa,"electricians in kutztown pa",0,10,
+hamburg,Berks,pa,"electrician hamburg pa",0,10,1.51
+york,York,pa,"generator installation york pa",0,10,
+bethlehem,Northampton,pa,"electrical contractor bethlehem pa",0,10,
+bethlehem,Northampton,pa,"electrical contractors bethlehem pa",0,10,
+bethlehem,Northampton,pa,"commercial electrician bethlehem pa",0,10,
+philadelphia,Philadelphia,pa,"commercial electrician philadelphia pa",0,10,
+philadelphia,Philadelphia,pa,"generator installation philadelphia pa",0,10,
+baltimore,MD,md,"electrician near baltimore md",0,10,
+bel air,MD,md,"electrical contractor bel air md",0,10,
+bel air,MD,md,"electrical contractors bel air md",0,10,
+wilmington,DE,de,"electrical contractor wilmington de",0,10,
+wilmington,DE,de,"electrical contractors wilmington de",0,10,
