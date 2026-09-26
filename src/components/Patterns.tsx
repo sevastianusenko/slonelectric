@@ -102,6 +102,49 @@ export function DotDiamonds({
   );
 }
 
+/**
+ * Несколько узлов сетки время от времени вспыхивают оранжевым и гаснут —
+ * подсмотрено на etlgroup.com.ua (страница контактов, там это Lottie:
+ * assets/lottie/contacts_top_left.json, шесть слоёв, каждый — scale
+ * 0 → 120% → 0 за 20 кадров при 25fps, то есть 0.8с, раскиданные по циклу
+ * в 321 кадр / 12.84с). Здесь тот же рисунок без Lottie: один CSS-keyframe
+ * (`diamond-pulse` в globals.css) и своя задержка у каждой точки.
+ * Координаты — проценты от контейнера, чтобы попадать в сетку на любом
+ * экране, а не абсолютные пиксели одного макета.
+ */
+export function PulseDiamonds({
+  dots, size = 10, color = "var(--color-primary-500)", className = "",
+}: {
+  dots: { x: number; y: number; delay: string }[];
+  size?: number;
+  color?: string;
+  className?: string;
+}) {
+  // Без inset-0: этот класс задаёт top/right/bottom/left и спорит с переданными
+  // -right-24/top-0 у вызывающей стороны — ромбы уезжали к левому краю секции
+  // вместо правого. GridLines рядом устроен так же, без inset-0.
+  return (
+    <div className={`pointer-events-none absolute ${className}`} aria-hidden="true">
+      {dots.map((d, i) => (
+        <span
+          key={i}
+          className="diamond-pulse absolute block"
+          style={{
+            left: `${d.x}%`,
+            top: `${d.y}%`,
+            width: size,
+            height: size,
+            marginLeft: -size / 2,
+            marginTop: -size / 2,
+            background: color,
+            animationDelay: d.delay,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 /** Диагональный срез светло-серого фона секции. */
 export function DiagonalWash({
   className = "", from = "#f6f6f6", clip = "polygon(45% 0, 100% 0, 100% 100%)",

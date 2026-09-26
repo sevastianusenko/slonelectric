@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# оригиналы фото с объектов — 549 МБ, в репозиторий не кладём.
+# в public/photos/ попадают только сжатые версии, которые реально используются на страницах.
+assets/photos/
+assets/_duplicate-docs/

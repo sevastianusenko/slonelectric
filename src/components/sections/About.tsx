@@ -1,73 +1,53 @@
-import GhostHeading from "../GhostHeading";
-import Placeholder from "../Placeholder";
-import PlayButton from "../PlayButton";
-import { GridLines } from "../Patterns";
 import Link from "next/link";
-import { about } from "@/lib/content";
-
-/** Фото с фирменной смещённой серой плитой и кнопкой play поверх. */
-function VideoCard({ label, className = "" }: { label: string; className?: string }) {
-  return (
-    <div className={`left-shadow relative ${className}`}>
-      <Placeholder label={label} className="aspect-[524/270] w-full" />
-      <PlayButton />
-    </div>
-  );
-}
+import GhostHeading from "../GhostHeading";
+import Photo from "../Photo";
+import Reveal from "../Reveal";
+import ShadowPlate from "../ShadowPlate";
+import { GridLines } from "../Patterns";
+import { about, site } from "@/lib/content";
 
 export default function About() {
   return (
-    <>
-      {/* Про нас */}
-      <section className="home_about_section relative overflow-hidden bg-white">
-        <GridLines className="right-0 top-10 hidden h-[560px] w-[720px] lg:block" />
+    <section className="relative overflow-hidden bg-white py-16 lg:py-24">
+      <GridLines className="-left-24 top-16 hidden h-[500px] w-[600px] lg:block" />
 
-        <div className="relative mx-auto w-full max-w-[1440px] px-4 pt-20">
-          <div className="relative">
-            <div className="z-10 mx-auto my-0 flex w-full max-w-[524px] items-center lg:absolute lg:bottom-0 lg:left-0 lg:top-0">
-              <VideoCard label="company overview video still" className="w-full" />
+      <div className="relative mx-auto max-w-[1140px] px-4">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <Reveal anim="slide-in-left" className="order-2 lg:order-1">
+            <ShadowPlate className="max-w-[460px]">
+              <Photo {...about.photo} className="aspect-[3/4] w-full" />
+            </ShadowPlate>
+          </Reveal>
+
+          <Reveal anim="slide-in-right" className="order-1 lg:order-2">
+            <GhostHeading ghost={about.ghost} heading={about.heading} />
+
+            <div className="mt-8 space-y-5">
+              {about.body.map((p) => (
+                <p key={p.slice(0, 24)} className="max-w-[540px] text-[17px] leading-7 text-gray-700">
+                  {p}
+                </p>
+              ))}
             </div>
 
-            <div className="relative mx-auto grid max-w-[1140px] grid-cols-1 md:grid-cols-2">
-              <div aria-hidden="true" />
-              <div className="rounded-md p-4 lg:bg-white lg:p-0">
-                <div className="flex items-center py-8 xl:py-12">
-                  <GhostHeading ghost={about.ghost} heading={about.heading} />
-                </div>
-                <p className="max-w-[560px] text-[16px] leading-7 text-gray-700">{about.body}</p>
-                <Link href={about.cta.href} className="btn btn_solid mt-8">
-                  {about.cta.label}
-                </Link>
-              </div>
+            <div className="mt-8 flex flex-wrap items-center gap-6">
+              <Link href={about.cta.href} className="btn btn_solid">
+                {about.cta.label}
+              </Link>
+              <a
+                href={site.googleMapsUrl}
+                target="_blank"
+                rel="noopener"
+                className="text-[15px] font-bold text-ink-900 hover:text-primary-500"
+              >
+                <span className="text-primary-500">{site.reviews.rating.toFixed(1)}</span>
+                {" ★ "}
+                on {site.reviews.source}
+              </a>
             </div>
-          </div>
+          </Reveal>
         </div>
-      </section>
-
-      {/* Миссия и цель */}
-      <section className="home_about_section relative overflow-hidden bg-white">
-        <div className="relative mx-auto w-full max-w-[1440px] px-4 pb-20 pt-16">
-          <div className="relative">
-            <div className="z-10 mx-auto my-0 flex w-full max-w-[524px] items-center lg:absolute lg:right-0 lg:top-0">
-              <VideoCard label="site walkthrough video still" className="w-full" />
-            </div>
-
-            <div className="relative mx-auto grid max-w-[1140px] grid-cols-1 md:grid-cols-2">
-              <div className="space-y-12 py-8">
-                <div>
-                  <h2 className="text-[28px] font-extrabold text-primary-500 lg:text-[36px]">{about.mission.heading}</h2>
-                  <p className="mt-5 max-w-[520px] text-[16px] leading-7 text-gray-700">{about.mission.body}</p>
-                </div>
-                <div>
-                  <h2 className="text-[28px] font-extrabold text-primary-500 lg:text-[36px]">{about.goal.heading}</h2>
-                  <p className="mt-5 max-w-[520px] text-[16px] leading-7 text-gray-700">{about.goal.body}</p>
-                </div>
-              </div>
-              <div aria-hidden="true" />
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

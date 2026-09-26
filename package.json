@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:projects": "node scripts/check-projects.mjs",
+    "check:blog": "node scripts/check-blog.mjs",
+    "check": "node scripts/check-projects.mjs && node scripts/check-blog.mjs && node scripts/check-services.mjs && node scripts/check-areas.mjs && node scripts/check-towns.mjs",
+    "check:services": "node scripts/check-services.mjs",
+    "check:areas": "node scripts/check-areas.mjs",
+    "check:towns": "node scripts/check-towns.mjs"
   },
   "dependencies": {
     "next": "16.3.6",

@@ -19,7 +19,8 @@ export default function GoFuture() {
             <text
               x="50%" y="50%" dy="0.34em" textAnchor="middle"
               fill="white"
-              style={{ fontSize: 186, fontWeight: 800, letterSpacing: "0.02em" }}
+              textLength="1340" lengthAdjust="spacingAndGlyphs"
+              style={{ fontSize: 176, fontWeight: 800 }}
             >
               {goFuture.text}
             </text>
@@ -27,7 +28,6 @@ export default function GoFuture() {
         </defs>
         <rect width="1440" height="210" fill="url(#gf-fill)" mask="url(#gf-mask)" />
       </svg>
-      <span className="sr-only">photo needed — aerial footage behind the wordmark</span>
     </section>
   );
 }

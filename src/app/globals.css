@@ -41,10 +41,6 @@ body {
 /* ──────────────────────────────────────────────────────────────
    Keyframes — один в один с оригинала
    ────────────────────────────────────────────────────────────── */
-@keyframes stroke_animation {
-  0%  { stroke-dashoffset: 0; stroke-dasharray: 0 100%;   stroke-width: 1; }
-  to  { stroke-dashoffset: 0; stroke-dasharray: 100% 0;   stroke-width: 1; }
-}
 @keyframes fade-in       { 0% { opacity: 0 } to { opacity: 1 } }
 @keyframes slide-in-left { 0% { transform: translateX(-1000px); opacity: 0 } to { transform: translateX(0); opacity: 1 } }
 @keyframes slide-in-right{ 0% { transform: translateX(1000px);  opacity: 0 } to { transform: translateX(0); opacity: 1 } }
@@ -63,13 +59,78 @@ body {
 .slide-in-bottom{ animation: slide-in-bottom 1s cubic-bezier(.25,.46,.45,.94) both }
 
 /* секция скрыта, пока не попала во вьюпорт */
-.animated_section { visibility: hidden }
-.animated_section.is-visible { visibility: visible }
+/* Прячем только когда JS точно работает: иначе краулер и браузер без скриптов
+   не увидят девять секций из девяти. Класс js ставится инлайном в <head>. */
+.js .animated_section { visibility: hidden }
+.js .animated_section.is-visible { visibility: visible }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto }
   .fade-in, .slide-in-left, .slide-in-right, .slide-in-bottom { animation: none }
-  .animated_section { visibility: visible }
+  .js .animated_section { visibility: visible }
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   Появление по очереди и прорисовка линеек.
+   Исходные состояния спрятаны за .js: без скриптов ничего не прячем,
+   иначе краулер снова не увидит содержимое.
+   ────────────────────────────────────────────────────────────── */
+/* Подпись в герое: выезжает поверх высветленного низа мозаики.
+   Прячем только под .js, иначе краулер и браузер без скриптов
+   не увидят H1 — этой ошибкой уже наступали на грабли однажды. */
+@keyframes caption-in { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
+@keyframes rule-in    { from { transform: scaleX(0) }                    to { transform: scaleX(1) } }
+
+.js .caption-in { animation: caption-in 1s cubic-bezier(.215,.61,.355,1) .45s both }
+.js .rule-in    { animation: rule-in .8s cubic-bezier(.215,.61,.355,1) .85s both; transform-origin: center }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .caption-in, .js .rule-in { animation: none }
+}
+
+/* Медленный наезд на кадр в мозаике героя. Долгий цикл и alternate,
+   чтобы движение читалось как жизнь, а не как анимация. */
+@keyframes drift { from { transform: scale(1) } to { transform: scale(1.14) } }
+.drift { animation: drift 20s ease-in-out infinite alternate }
+@media (prefers-reduced-motion: reduce) { .drift { animation: none } }
+
+/* Ромбы фоновой сетки, которые время от времени вспыхивают и гаснут —
+   у etlgroup.com.ua это Lottie-ролик, здесь тот же эффект на одном keyframe:
+   почти всё время ромб невидим (scale 0), на пару кадров вспыхивает крупнее
+   и оранжевым. Цикл длиннее самой вспышки и у каждого узла своя задержка
+   (см. PulseDiamonds в Patterns.tsx), поэтому они не мигают синхронно.
+   Обычная CSS-анимация, JS для запуска не нужен — гейтить за .js незачем. */
+@keyframes diamond-pulse {
+  0%, 88%, 100% { transform: rotate(45deg) scale(0);    opacity: 0 }
+  92%           { transform: rotate(45deg) scale(1.15); opacity: 1 }
+  96%           { transform: rotate(45deg) scale(0);    opacity: 0 }
+}
+.diamond-pulse { animation: diamond-pulse 13s ease-in-out infinite }
+@media (prefers-reduced-motion: reduce) {
+  /* Не дёргаем — просто оставляем маленький статичный ромб на месте вспышки. */
+  .diamond-pulse { animation: none; transform: rotate(45deg); opacity: .7 }
+}
+
+@keyframes rise      { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
+@keyframes line-draw { from { transform: scaleX(0) }                    to { transform: scaleX(1) } }
+
+.js .rise      { opacity: 0 }
+.js .line-draw { transform: scaleX(0); transform-origin: left }
+
+.js .animated_section.is-visible .rise {
+  animation: rise .6s cubic-bezier(.215,.61,.355,1) both;
+  animation-delay: var(--d, 0ms);
+}
+.js .animated_section.is-visible .line-draw {
+  animation: line-draw .9s cubic-bezier(.215,.61,.355,1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .rise      { opacity: 1 }
+  .js .line-draw { transform: none }
+  .js .animated_section.is-visible .rise,
+  .js .animated_section.is-visible .line-draw { animation: none }
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -78,15 +139,31 @@ body {
 .ghost-heading text {
   text-transform: uppercase;
   font-weight: 800;
-  fill: transparent;
-  stroke: #d1d5db;
-  stroke-width: 1;
+  /* Цвет самой заливки почти не важен у контурных tone: видимый цвет там
+     задаёт feFlood внутри SVG-фильтра (см. GhostHeading.tsx), заливка
+     существует только чтобы у fill-rule было из чего вырезать дырки букв.
+     У tone="gray" фильтра нет — там это ровно видимый цвет. */
+  fill: #9aa0ab;
   user-select: none;
 }
-.ghost-heading.is-visible text { animation: stroke_animation 2s ease-in-out }
 .ghost-heading[data-tone="gray"] text { fill: #f6f6f6 }
-.ghost-heading[data-tone="dark"] text { fill: #363e4e; stroke: #6c6d71 }
-.ghost-heading[data-tone="dark"].is-visible text { animation: stroke_animation 3s ease-in-out }
+
+/* Появление: раньше буква «прорисовывалась» по контуру через stroke-dasharray,
+   но у самого контура эту обводку и заменил фильтр (см. компонент) — dasharray
+   с фильтром не дружит, он относится только к stroke. Взамен слово открывается
+   слева направо через clip-path: тот же «рисуется» на глаз, работает поверх
+   любой заливки/фильтра. Оставляем видимым без .js: это фон, а не контент,
+   и раньше он тоже был виден всегда, просто без анимации. */
+.js .ghost-heading { clip-path: inset(0 100% 0 0) }
+/* Задержка .5s: сначала должен осесть настоящий заголовок рядом (у него
+   своя анимация въезда), а фоновое слово дорисовывается следом, а не
+   одновременно — так читается как две ступени, а не одно движение разом. */
+.js .ghost-heading.is-visible { animation: ghost-reveal 1.3s cubic-bezier(.215,.61,.355,1) .5s both }
+@keyframes ghost-reveal { to { clip-path: inset(0 0 0 0) } }
+@media (prefers-reduced-motion: reduce) {
+  .js .ghost-heading { clip-path: none }
+  .js .ghost-heading.is-visible { animation: none }
+}
 
 /* ──────────────────────────────────────────────────────────────
    Рисующаяся линейная сетка / штриховка / точки
