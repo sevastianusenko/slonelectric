@@ -8,7 +8,7 @@ import { areaList } from "@/content/areas";
  * собственной разметкой. Вопросы размечает та страница, где они есть.
  * Все значения берутся из подтверждённых данных карточки Google.
  */
-export default function Schema({ url = "https://slonelectric.com" }: { url?: string }) {
+export default function Schema({ url = `https://${site.domain}` }: { url?: string }) {
   const business = {
     "@context": "https://schema.org",
     "@type": "ElectricalContractor",

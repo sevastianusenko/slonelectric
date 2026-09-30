@@ -13,7 +13,14 @@ export const site = {
   phoneHref: "+17178219166",
   /** Подтверждено клиентом 25.09.2026. */
   email: "Anatoly@slonelectric.com",
-  domain: "slonelectric.com",
+  /**
+   * С www: хостинг реально отдаёт 308 с голого домена на www (проверено
+   * на живом сайте 30.09.2026). Раньше здесь стоял домен без www, и
+   * canonical/sitemap/schema ссылались на адрес, который сам же уходит
+   * редиректом на другой — search-движку это canonical-без-www не
+   * "самоссылающийся", а адрес, который тут же уводит в сторону.
+   */
+  domain: "www.slonelectric.com",
   address: {
     street: "319 Yeagley Rd",
     city: "Myerstown",

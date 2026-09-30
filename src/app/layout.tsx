@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import Schema from "@/components/Schema";
+import { site } from "@/lib/content";
 
 /** Оригинал набран HOK Sans Pro (коммерческий). Manrope — ближайший свободный аналог. */
 const manrope = Manrope({
@@ -15,7 +16,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://slonelectric.com"),
+  metadataBase: new URL(`https://${site.domain}`),
   title: "Agricultural & Industrial Electrician | Myerstown PA",
   description:
     "Slon Electric wires poultry houses, dairy barns, grain systems, plants and commercial buildings across Lebanon, Lancaster and Berks counties. Rated 5.0 on Google. Phone answered 24 hours.",
