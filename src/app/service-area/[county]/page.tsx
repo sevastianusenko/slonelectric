@@ -85,7 +85,8 @@ export default async function AreaPage({
     "@context": "https://schema.org",
     /** Тот же @id, что у разметки в макете: это одна компания, а не вторая. */
     "@id": `https://${site.domain}/#business`,
-    "@type": "ElectricalContractor",
+    // Electrician, не ElectricalContractor — см. комментарий в Schema.tsx.
+    "@type": "Electrician",
     name: site.name,
     areaServed: [
       { "@type": "AdministrativeArea", name: `${a.county}, Pennsylvania` },

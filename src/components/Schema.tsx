@@ -11,7 +11,16 @@ import { areaList } from "@/content/areas";
 export default function Schema({ url = `https://${site.domain}` }: { url?: string }) {
   const business = {
     "@context": "https://schema.org",
-    "@type": "ElectricalContractor",
+    /**
+     * "ElectricalContractor" не существует в словаре schema.org — у него
+     * нет описания и нет места в иерархии типов. Для Google это нераспознанный
+     * тип узла, и валидатор Review snippets отваливался именно на этом:
+     * "Invalid object type for field '<parent_node>'" — узел с aggregateRating
+     * сам имел невалидный тип. Правильный тип — Electrician, подтип
+     * HomeAndConstructionBusiness (см. schema.org/HomeAndConstructionBusiness).
+     * Проверено 30.09.2026 после письма Search Console.
+     */
+    "@type": "Electrician",
     "@id": `${url}/#business`,
     name: site.name,
     legalName: site.legal,

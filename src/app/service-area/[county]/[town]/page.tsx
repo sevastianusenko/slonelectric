@@ -90,7 +90,8 @@ export default async function TownPage({
   const schema = {
     "@context": "https://schema.org",
     "@id": `https://${site.domain}/#business`,
-    "@type": "ElectricalContractor",
+    // Electrician, не ElectricalContractor — см. комментарий в Schema.tsx.
+    "@type": "Electrician",
     name: site.name,
     areaServed: {
       "@type": "City",

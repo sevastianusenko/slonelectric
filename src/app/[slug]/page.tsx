@@ -94,7 +94,8 @@ export default async function ServicePage({
     serviceType: s.h1,
     provider: {
       "@id": `https://${site.domain}/#business`,
-      "@type": "ElectricalContractor",
+      // Electrician, не ElectricalContractor — см. комментарий в Schema.tsx.
+      "@type": "Electrician",
       name: site.name,
       telephone: site.phone,
       address: {
