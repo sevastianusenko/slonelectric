@@ -3,11 +3,13 @@
  *
  * ВАЖНО. Политика приватности описывает то, что сайт делает **на самом деле**,
  * а не то, что обычно пишут в шаблонах. Проверено 25.09.2026, обновлено
- * 25.09.2026 в тот же день, когда на сайте появилась форма:
+ * 03.10.2026, когда форму перевели с FormSubmit на Web3Forms (другой
+ * сторонний обработчик, та же роль — само обещание политике не изменилось,
+ * поменялось только название сервиса):
  *   - сторонних скриптов и аналитики на страницах нет;
  *   - куки сайт не ставит, localStorage и sessionStorage не использует;
  *   - на /contact есть форма — единственная на всём сайте — она отправляет
- *     данные напрямую в FormSubmit (formsubmit.co), сторонний сервис
+ *     данные напрямую в Web3Forms (web3forms.com), сторонний сервис
  *     приёма писем, без своего сервера и без хранения на нашей стороне;
  *   - на /contact встроена карта Google Maps (iframe) — Google получает
  *     обычные технические данные о запросе так же, как любой сайт с картой;
@@ -59,7 +61,7 @@ export const privacy: LegalPage = {
     {
       heading: "The form on the contact page",
       body: [
-        "The one form on this site, on the Contact page, is delivered by FormSubmit, a third party service. When you submit it, what you typed is sent to FormSubmit and from there by email to us. FormSubmit is the processor for that one moment of delivery; we are not able to see or control what FormSubmit itself logs on its own servers, and their own policy governs that.",
+        "The one form on this site, on the Contact page, is delivered by Web3Forms, a third party service. When you submit it, what you typed is sent to Web3Forms and from there by email to us. Web3Forms is the processor for that one moment of delivery; we are not able to see or control what Web3Forms itself logs on its own servers, and their own policy governs that.",
         "Once the email reaches us, it sits in an ordinary inbox like any other message. Everywhere else on this site, contacting us means a phone call or an email you write yourself, and in both of those you decide what to tell us directly, with nothing in between.",
         "What you tell us, by any of these routes, we keep for the ordinary reason a contractor keeps it: to quote the job, to do the work, to come back if something needs attention afterwards, and to meet the record keeping any business has to meet. We do not add anybody to a marketing list from a form submission or a call, and we do not pass details to anybody outside the work itself.",
       ],
