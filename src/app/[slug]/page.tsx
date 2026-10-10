@@ -80,7 +80,7 @@ export default async function ServicePage({
    * работы и услугой сайта. Если не задана, карточки собираются как
    * раньше, из seeAlso с обложками самих услуг.
    */
-  const rawHighlightCards: { title: string; body: string; href: string; photoProject?: string }[] =
+  const rawHighlightCards: { title: string; body: string; href: string; photoProject?: string; photoIndex?: number }[] =
     s.highlightCards ??
     s.seeAlso
       .map((x) => {
@@ -91,7 +91,7 @@ export default async function ServicePage({
   const highlightCards = rawHighlightCards.map((c) => ({
     ...c,
     photo: c.photoProject
-      ? projectMap[c.photoProject]?.photos[0]
+      ? projectMap[c.photoProject]?.photos[c.photoIndex ?? 0]
       : c.href.startsWith("/projects/")
         ? projectMap[c.href.slice("/projects/".length)]?.photos[0]
         : serviceMap[c.href.slice(1)]?.hero,

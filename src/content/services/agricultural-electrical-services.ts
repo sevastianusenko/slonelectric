@@ -307,7 +307,7 @@ const service: Service = {
       title: "Dairy barns and parlours",
       body: "Free stall, tie stall, parlour and bulk tank rooms.",
       href: "/projects/dairy-parlour-bulk-tank-wiring",
-      photoProject: "dairy-parlour-bulk-tank-wiring",
+      photoProject: "free-stall-barn-lighting",
     },
     {
       title: "Grain and feed handling",
@@ -340,7 +340,8 @@ const service: Service = {
       body:
         "Fewer fixtures than you had, placed where the work actually happens, with a bill that drops the month after.",
       href: "/commercial-led-lighting",
-      photoProject: "free-stall-barn-lighting",
+      photoProject: "poultry-house-new-construction",
+      photoIndex: 1,
     },
     {
       title: "Control panels for farm equipment",
