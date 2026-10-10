@@ -13,7 +13,7 @@ import { site, aboutPage } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About Slon Electric | Myerstown PA Electrical Contractor",
   description:
-    "A family run electrical contractor in Myerstown PA with more than fifteen years in agricultural, commercial and industrial work. Our mission, goal and how we work.",
+    "A family run electrical contractor in Myerstown PA, led by an electrician with more than eighteen years running jobs in agricultural, commercial and industrial work. Our mission, goal and how we work.",
   alternates: { canonical: "/about" },
 };
 

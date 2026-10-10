@@ -206,11 +206,16 @@ export const about = {
    * Начинаем с работы и со срока, а не с адреса: адрес живёт на /contact.
    * Про потери здесь намеренно короче, чем на /services: та же мысль в трёх
    * словах, иначе сайт повторяет сам себя на каждом экране.
+   *
+   * Срок — это личный опыт Анатолия в профессии (18 лет, подтверждено
+   * клиентом 10.10.2026), а не возраст компании: сам Slon Electric LLC
+   * зарегистрирован недавно. Формулировка и везде по сайту обязана это
+   * различать — «Anatoly has been running jobs», не «we have wired».
    */
   body: [
-    "For more than fifteen years we have wired the buildings this part of Pennsylvania runs on. Poultry houses and dairy barns, grain systems, processing plants and the commercial buildings that sit between them.",
+    "Anatoly has been running electrical jobs in agricultural, commercial and industrial buildings for more than eighteen years: poultry houses and dairy barns, grain systems, processing plants and the commercial buildings that sit between them.",
     "What those have in common is that the power is not a convenience. Stop one of them for an afternoon and the loss is not the repair bill, it is whatever was inside the building at the time. That is the work the business was built around, and it is the reason the phone is answered at night and the crew keeps training.",
-    "Anatoly runs that crew and is usually the person who picks up.",
+    "He runs that crew now and is usually the person who picks up.",
   ],
   cta: { label: "More about us", href: "/about" },
   photo: {
@@ -458,15 +463,21 @@ export const servicesPage = {
 /**
  * Страница /about. Текст в разметке держать нельзя, поэтому он живёт здесь.
  *
- * «Более 15 лет» подтверждено клиентом 24.09.2026. До этого срок работы
- * стоял в OPEN-QUESTIONS как то, что выдумывать запрещено.
+ * «Более 15 лет» было подтверждено клиентом 24.09.2026, но формулировка
+ * звучала как возраст компании («we have wired... for fifteen years»).
+ * 10.10.2026 клиент поправил напрямую: сам бизнес зарегистрирован недавно,
+ * 18 лет — это личный стаж Анатолия в профессии до того, как появился
+ * Slon Electric LLC. Переписано всюду на сайте так, чтобы срок был явно
+ * привязан к человеку, а не к юрлицу — иначе это ровно тот случай, который
+ * CLAUDE.md запрещает («годы на рынке» нельзя выдумывать и для компании
+ * это и была бы выдумка).
  */
 export const aboutPage = {
   ghost: "Company",
   heading: "About us",
   lead: [
     "Slon Electric is a family run electrical contractor on Yeagley Road in Myerstown, in the middle of Lebanon County farm country. Anatoly runs the crew and is usually the person who answers the phone.",
-    "We have been doing this for more than fifteen years. In that time the work settled into three markets, agricultural, commercial and industrial, and into one habit that matters more than any of them: the crew keeps training. Codes change, equipment changes, and a contractor who stopped learning a decade ago is working from a picture of the trade that no longer matches the buildings.",
+    "Anatoly has been running jobs in the trade for more than eighteen years. In that time the work settled into three markets, agricultural, commercial and industrial, and into one habit that matters more than any of them: the crew keeps training. Codes change, equipment changes, and a contractor who stopped learning a decade ago is working from a picture of the trade that no longer matches the buildings.",
   ],
   photo: {
     src: "/photos/about-crew.webp",
@@ -501,7 +512,7 @@ export const aboutPage = {
       {
         title: "Our reputation is the asset",
         body:
-          "It took more than fifteen years to build and one bad job to damage. That is the calculation behind every decision we make about scheduling, materials and what we are willing to promise.",
+          "It took Anatoly more than eighteen years in the trade to build and one bad job could damage. That is the calculation behind every decision we make about scheduling, materials and what we are willing to promise.",
       },
       {
         title: "Straight answers, including the unprofitable ones",
@@ -524,7 +535,7 @@ export const aboutPage = {
   focus: {
     heading: "What we chose to be good at",
     body:
-      "Most of our work is in buildings where power is not a convenience: poultry houses, dairy barns, grain systems, processing plants and commercial buildings that cannot simply stop for the afternoon. Over fifteen years that is where we chose to get good, and everything else about the business points the same way. It is why the phone is covered at night, why the crew trains on controllers and drives rather than only on wiring, and why we would rather turn down a job than take one we cannot do properly.",
+      "Most of our work is in buildings where power is not a convenience: poultry houses, dairy barns, grain systems, processing plants and commercial buildings that cannot simply stop for the afternoon. Over more than eighteen years in the trade, that is where Anatoly chose to get good, and everything else about the business points the same way. It is why the phone is covered at night, why the crew trains on controllers and drives rather than only on wiring, and why we would rather turn down a job than take one we cannot do properly.",
   },
 
   /** Как работаем: существующий список, он клиенту нравился. */
