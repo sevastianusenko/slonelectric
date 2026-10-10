@@ -217,7 +217,45 @@ export default async function ServicePage({
         </div>
       </section>
 
-      {/* ── Текст вперемешку с кадрами ────────────────────────────── */}
+      {/*
+        ── Короткий обзор: фото и подпись, без текста ──────────────
+        Просьба клиента 10.10.2026: первое, что видит фермер или заказчик,
+        не должно быть сразу техническим текстом. Открыли страницу — короткое
+        вступление (герой выше), затем немного фото с короткими подписями,
+        и только потом всё остальное — то же самое содержимое, что было,
+        просто ниже по странице. Фото и подписи берём из тех же секций,
+        что идут следом (их же заголовки, их же кадры), ничего нового
+        не придумываем — просто показываем их ещё раз, компактно, заранее.
+      */}
+      {photoPool.length > 0 && (
+        <section className="relative overflow-hidden bg-white py-12 lg:py-16">
+          <div className="mx-auto max-w-[1140px] px-4">
+            <Reveal anim="fade-in" className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+              {s.sections.map((sec, i) => {
+                const photo = photoPool[i % photoPool.length];
+                if (!photo) return null;
+                return (
+                  <div
+                    key={sec.heading}
+                    className="rise"
+                    style={{ "--d": `${80 + i * 70}ms` } as React.CSSProperties}
+                  >
+                    <Photo
+                      src={photo.src}
+                      alt={photo.alt}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 260px"
+                      className="aspect-[4/3] w-full"
+                    />
+                    <p className="mt-3 text-[14px] font-bold leading-5 text-ink-900">{sec.heading}</p>
+                  </div>
+                );
+              })}
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* ── Текст вперемешку с кадрами: то же самое, подробно ───────── */}
       {s.sections.map((sec, i) => {
         const photo = photoPool[i];
         const flip = i % 2 === 1;
