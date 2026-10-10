@@ -54,7 +54,6 @@ const service: Service = {
     {
       group: "Poultry houses",
       note: "Broiler, layer and pullet houses, plus the equipment rooms behind them.",
-      project: "poultry-house-ventilation-power",
       items: [
         "Tunnel and minimum ventilation fan circuits",
         "Variable speed fan wiring and drive replacement",
@@ -70,7 +69,6 @@ const service: Service = {
     {
       group: "Dairy barns and parlours",
       note: "Free stall, tie stall, parlour and bulk tank rooms.",
-      project: "dairy-parlour-bulk-tank-wiring",
       items: [
         "Milking parlour power and equipment connections",
         "Vacuum pump and milk pump motor circuits",
@@ -86,7 +84,6 @@ const service: Service = {
     {
       group: "Grain and feed handling",
       note: "Dryers, legs, bins and the controls that sequence them.",
-      project: "grain-system-power-controls",
       items: [
         "Grain dryer power and control wiring",
         "Bucket elevator and leg motor circuits",
@@ -101,7 +98,6 @@ const service: Service = {
     {
       group: "Farm power and distribution",
       note: "Everything between the utility and the building panels.",
-      project: "farm-service-entrance-upgrade",
       items: [
         "Farm service entrance replacement and upsizing",
         "Meter socket, main disconnect and CT cabinet work",
@@ -117,7 +113,6 @@ const service: Service = {
     {
       group: "Standby power and alarms",
       note: "What keeps the critical list running when the line drops.",
-      project: "farm-standby-generator",
       items: [
         "Standby generator sizing, siting and installation",
         "Automatic and manual transfer switch installation",
@@ -132,7 +127,6 @@ const service: Service = {
     {
       group: "Shops, sheds and farm buildings",
       note: "The buildings that are not livestock but still on the yard.",
-      project: "pole-barn-from-the-shell",
       items: [
         "Pole barn wiring from the empty shell",
         "Shop power, welder receptacles and compressor circuits",
@@ -294,40 +288,70 @@ const service: Service = {
     "emergency-electrician",
   ],
 
-  seeAlsoCards: [
+  /**
+   * Девять карточек сразу после героя: категории фермерской работы
+   * (проекты) и сквозные услуги сайта (панели, генераторы, освещение,
+   * щиты, аварийка) сведены в один список без дублей. "Farm power and
+   * distribution" и "Standby power and alarms" раньше были одновременно
+   * и категорией, и отдельной карточкой услуги — теперь это по одной
+   * объединённой карточке на каждую тему, ведущей на страницу услуги.
+   */
+  highlightCards: [
     {
-      slug: "standby-generator-installation",
-      title: "Standby power for livestock operations",
-      body:
-        "Sized from the loads that cannot stop, not from the size of the service. The fans, the pumps and the alarm that calls you keep running when the line goes down.",
-      photoProject: "farm-standby-generator",
+      title: "Poultry houses",
+      body: "Broiler, layer and pullet houses, plus the equipment rooms behind them.",
+      href: "/projects/poultry-house-ventilation-power",
+      photoProject: "poultry-house-ventilation-power",
     },
     {
-      slug: "electrical-service-upgrades",
-      title: "Farm panel and service upgrades",
+      title: "Dairy barns and parlours",
+      body: "Free stall, tie stall, parlour and bulk tank rooms.",
+      href: "/projects/dairy-parlour-bulk-tank-wiring",
+      photoProject: "dairy-parlour-bulk-tank-wiring",
+    },
+    {
+      title: "Grain and feed handling",
+      body: "Dryers, legs, bins and the controls that sequence them.",
+      href: "/projects/grain-system-power-controls",
+      photoProject: "grain-system-power-controls",
+    },
+    {
+      title: "Shops, sheds and farm buildings",
+      body: "The buildings that are not livestock but still on the yard.",
+      href: "/projects/pole-barn-from-the-shell",
+      photoProject: "pole-barn-from-the-shell",
+    },
+    {
+      title: "Farm power, panels and service upgrades",
       body:
-        "For a service that grew one subpanel at a time since the farm was smaller. Sized from an honest load calculation, cut over in the shortest window the work allows.",
+        "Everything between the utility and the building panels, sized from an honest load calculation rather than habit.",
+      href: "/electrical-service-upgrades",
       photoProject: "farm-service-entrance-upgrade",
     },
     {
-      slug: "commercial-led-lighting",
+      title: "Standby power, generators and alarms",
+      body:
+        "What keeps the critical list running when the line drops: the fans, the pumps and the alarm that calls you.",
+      href: "/standby-generator-installation",
+      photoProject: "farm-standby-generator",
+    },
+    {
       title: "Farm and barn lighting",
       body:
-        "Fewer fixtures than you had, placed where the work actually happens, with a bill that drops the month after. Barns and yards, not a fixture count on a spec sheet.",
+        "Fewer fixtures than you had, placed where the work actually happens, with a bill that drops the month after.",
+      href: "/commercial-led-lighting",
       photoProject: "free-stall-barn-lighting",
     },
     {
-      slug: "control-panels-machine-wiring",
       title: "Control panels for farm equipment",
-      body:
-        "Built and wired for the person who opens it at two in the morning without having built it. Starters, drives and the connections out to the motors that earn the money.",
+      body: "Built and wired for the person who opens it at two in the morning without having built it.",
+      href: "/control-panels-machine-wiring",
       photoProject: "poultry-house-equipment-wiring",
     },
     {
-      slug: "emergency-electrician",
       title: "24 hour farm emergency service",
-      body:
-        "A ventilation failure at two in the morning does not wait until Monday. Answered around the clock, and told straight whether it is an emergency or something that can wait.",
+      body: "A ventilation failure at two in the morning does not wait until Monday. Answered around the clock.",
+      href: "/emergency-electrician",
     },
   ],
 

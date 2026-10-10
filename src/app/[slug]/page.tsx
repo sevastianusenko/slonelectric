@@ -73,25 +73,29 @@ export default async function ServicePage({
   const articles = s.related.articles.map((a) => articleMap[a]).filter(Boolean);
   const also = s.seeAlso.map((x) => serviceMap[x]).filter(Boolean);
   const scopeCount = s.scope.reduce((n, g) => n + g.items.length, 0);
-  /** Группы scope, у которых есть привязанный проект: карточки с реальным фото сразу после героя. */
-  const scopeCards = s.scope
-    .filter((g) => g.project && projectMap[g.project])
-    .map((g) => ({ group: g, project: projectMap[g.project as string] }));
   /**
-   * Карточки услуг из seeAlso: там, где задан seeAlsoCards, карточка
-   * одета под эту страницу (свой заголовок, текст и фото с объекта вместо
-   * обложки услуги). Остальные слаги из seeAlso без переопределения
-   * заполняются как раньше, обложкой самой услуги.
+   * Карточки сразу после героя. Своя подборка (highlightCards), если на
+   * странице она задана: сюда идёт то, что реально релевантно именно
+   * этой странице, одной карточкой на тему, без дублей между категорией
+   * работы и услугой сайта. Если не задана, карточки собираются как
+   * раньше, из seeAlso с обложками самих услуг.
    */
-  const alsoCards = s.seeAlso.map((slug) => {
-    const override = s.seeAlsoCards?.find((c) => c.slug === slug);
-    if (override) {
-      const photo = override.photoProject ? projectMap[override.photoProject]?.photos[0] : undefined;
-      return { slug, title: override.title, body: override.body, photo };
-    }
-    const svc = serviceMap[slug];
-    return svc ? { slug, title: svc.h1, body: svc.summary, photo: undefined } : null;
-  }).filter((c): c is NonNullable<typeof c> => !!c);
+  const rawHighlightCards: { title: string; body: string; href: string; photoProject?: string }[] =
+    s.highlightCards ??
+    s.seeAlso
+      .map((x) => {
+        const svc = serviceMap[x];
+        return svc ? { title: svc.h1, body: svc.summary, href: `/${x}` } : null;
+      })
+      .filter((c): c is { title: string; body: string; href: string } => !!c);
+  const highlightCards = rawHighlightCards.map((c) => ({
+    ...c,
+    photo: c.photoProject
+      ? projectMap[c.photoProject]?.photos[0]
+      : c.href.startsWith("/projects/")
+        ? projectMap[c.href.slice("/projects/".length)]?.photos[0]
+        : serviceMap[c.href.slice(1)]?.hero,
+  }));
 
   /**
    * Кадры для блоков берём из наших же проектов по этой услуге: своего фото
@@ -248,73 +252,38 @@ export default async function ServicePage({
       </section>
 
       {/*
-        ── Короткий обзор: карточки по категориям работы ───────────
-        Просьба клиента 10.10.2026, уточнена 11.10.2026: первое, что видит
-        фермер после героя, не должно быть сразу техническим текстом.
-        Клиент попросил категории фермерской работы с реальным фото
-        объекта: вентиляция птичника, корм и зерно, молочная ферма и так
-        далее. Источник — те же группы `s.scope`, что и в блоке "What this
-        covers" ниже по странице (полный список пунктов там же, без
-        изменений), просто у части групп теперь есть `project` — слаг
-        кейса с реальным фото, который и показываем тут картой. Группы
-        без project не попадают сюда, а остаются в полном списке ниже.
-        Пока project проставлен только на agricultural: на остальных
-        страницах эта секция просто не рендерится.
+        ── Короткий обзор: карточки, одной секцией ──────────────────
+        Просьба клиента 10.10.2026, трижды уточнена 11.10.2026: первое,
+        что видит фермер после героя, не должно быть сразу техническим
+        текстом, и это одна секция, а не две. Было две: категории
+        фермерской работы (из scope) и услуги сайта в агро-одежде
+        (из seeAlso) — в них задваивались темы ("Farm power and
+        distribution" и "Farm panel and service upgrades" были по сути
+        одной темой двумя карточками, то же со standby power). Свели
+        в один список `highlightCards`: девять карточек без дублей, часть
+        ведёт на проект (реальный кейс), часть на страницу услуги, у
+        каждой своё фото с объекта. Там, где highlightCards не задан
+        (страницы без своей подборки), секция собирается как раньше,
+        из seeAlso с обложками самих услуг.
       */}
-      {scopeCards.length > 0 && (
+      {highlightCards.length > 0 && (
         <section className="relative overflow-hidden bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-[1140px] px-4">
             <Rail label="What we do" />
             <h2 className="mt-7 max-w-[680px] text-[24px] font-extrabold leading-tight text-ink-900 lg:text-[32px]">
-              The kinds of work this covers
+              {s.highlightCards ? "The kinds of work this covers" : "The services behind this work"}
             </h2>
 
             <Reveal anim="fade-in" className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-              {scopeCards.map(({ group, project }, i) => (
+              {highlightCards.map((c, i) => (
                 <ServiceCard
-                  key={group.group}
-                  href={`/projects/${project.slug}`}
-                  photo={project.photos[0]}
-                  title={group.group}
-                  body={group.note ?? project.summary}
-                  index={i}
-                  priority={i < 3}
-                />
-              ))}
-            </Reveal>
-          </div>
-        </section>
-      )}
-
-      {/*
-        ── Карточки услуг сайта, в агро-одежде ─────────────────────
-        Клиент 11.10.2026: старые карточки общих услуг убирать было не
-        нужно, надо было добавить новые рядом, а не вместо. Эта секция —
-        те же услуги из seeAlso, но там, где задан seeAlsoCards, карточка
-        не повторяет один в один то, что уже видно на главной: свой
-        заголовок ("Farm and barn lighting" вместо "Commercial and
-        agricultural LED lighting"), свой текст и фото с реального
-        фермерского объекта вместо обложки услуги. Ведёт всё равно на ту
-        же страницу услуги. Там, где seeAlsoCards не задан (остальные
-        страницы), карточка собирается как раньше, обложкой услуги.
-      */}
-      {alsoCards.length > 0 && (
-        <section className="relative overflow-hidden bg-paper-100 py-12 lg:py-16">
-          <div className="mx-auto max-w-[1140px] px-4">
-            <Rail label="Services" />
-            <h2 className="mt-7 max-w-[680px] text-[24px] font-extrabold leading-tight text-ink-900 lg:text-[32px]">
-              The services behind this work
-            </h2>
-
-            <Reveal anim="fade-in" className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-              {alsoCards.map((c, i) => (
-                <ServiceCard
-                  key={c.slug}
-                  slug={c.slug}
+                  key={c.href}
+                  href={c.href}
                   photo={c.photo}
                   title={c.title}
                   body={c.body}
                   index={i}
+                  priority={i < 3}
                 />
               ))}
             </Reveal>
