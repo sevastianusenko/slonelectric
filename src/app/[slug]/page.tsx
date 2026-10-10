@@ -233,9 +233,12 @@ export default async function ServicePage({
         не должно быть сразу техническим текстом. Открыли страницу — короткое
         вступление (герой выше), затем немного фото с короткими подписями,
         и только потом всё остальное — то же самое содержимое, что было,
-        просто ниже по странице. Фото и подписи берём из тех же секций,
-        что идут следом (их же заголовки, их же кадры), ничего нового
-        не придумываем — просто показываем их ещё раз, компактно, заранее.
+        просто ниже по странице. Фото берём из тех же проектов, что идут
+        в разделах ниже. Подпись — это alt фото (простое описание того,
+        что на снимке), а не заголовок раздела: клиент прямо просил
+        "pictures with short descriptions", а не технический заголовок
+        вроде "Three layers of it, and the one people forget", который
+        ничего не говорит о самом кадре.
       */}
       {photoPool.length > 0 && (
         <section className="relative overflow-hidden bg-white py-12 lg:py-16">
@@ -256,7 +259,7 @@ export default async function ServicePage({
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 260px"
                       className="aspect-[4/3] w-full"
                     />
-                    <p className="mt-3 text-[14px] font-bold leading-5 text-ink-900">{sec.heading}</p>
+                    <p className="mt-3 text-[14px] font-bold leading-5 text-ink-900">{photo.alt}</p>
                   </div>
                 );
               })}
