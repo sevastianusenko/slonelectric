@@ -8,7 +8,7 @@ const service: Service = {
   summary:
     "Industrial electrical contracting for plants in Lebanon, Lancaster and Berks counties: distribution, machine connection, motor control, drives and shutdown work.",
   lead:
-    "A plant does not measure electrical work in hours of labour. It measures it in hours of production lost, and that number is usually larger than the whole invoice. Siemens put unplanned downtime across Fortune Global 500 industrial companies at 11 percent of annual turnover in [its True Cost of Downtime study](https://blog.siemens.com/2023/04/the-true-cost-of-downtime/), and every plant manager we meet already knows their own figure per hour. So the parts of this work that matter most are scheduling and preparation, not the wiring itself.",
+    "Electrical work for plants, processing facilities and the equipment that runs them, serving Lebanon, Lancaster and Berks counties in Central Pennsylvania. From plant distribution and machine connections to motors, drives, controls and shutdown work, Slon Electric builds and maintains the electrical systems a plant depends on.",
 
   hero: {
     src: "/photos/services/industrial-electrical-services.webp",
@@ -20,6 +20,7 @@ const service: Service = {
       heading: "From the incoming service to the terminal block",
       body: [
         "Plant work covers everything from the incoming service to the terminal block on a machine, and the jobs at either end of that range look nothing alike. One is switchgear, feeders and a load study. The other is three conductors, a gland and a drive parameter that has to be right the first time.",
+        "A plant does not measure electrical work in hours of labour. It measures it in hours of production lost, and that number is usually larger than the whole invoice. Siemens put unplanned downtime across Fortune Global 500 industrial companies at 11 percent of annual turnover in [its True Cost of Downtime study](https://blog.siemens.com/2023/04/the-true-cost-of-downtime/), and every plant manager we meet already knows their own figure per hour. So the parts of this work that matter most are scheduling and preparation, not the wiring itself.",
         "This region runs on food processing, feed and grain handling, packaging and light manufacturing, so most of what we see is 480V three phase, motors between a few horsepower and a few hundred, and equipment that arrives from a vendor with a wiring diagram in another language.",
         "The vendor diagram is worth saying more about, because it is where a lot of jobs go wrong quietly. It shows the machine, not the building. It assumes a supply voltage, a grounding arrangement and a disconnect location that may or may not match what is actually there, and it very rarely mentions the lead length between the drive and the motor. Reading it against the room before anything is ordered is a cheap hour.",
       ],

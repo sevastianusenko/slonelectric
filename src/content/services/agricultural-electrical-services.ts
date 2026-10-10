@@ -8,7 +8,7 @@ const service: Service = {
   summary:
     "Electrical work for poultry houses, dairy barns and grain systems across Lebanon, Lancaster and Berks counties: ventilation, controls, standby power and farm services.",
   lead:
-    "Farm electrical work is different from every other kind, and not because the wiring is harder. It is different because the consequences are biological. A poultry house that loses air movement on a hot day starts losing birds within the hour, and a parlour that goes down still has a herd waiting. We built this side of the business around buildings where the power has to hold.",
+    "Electrical work for poultry houses, dairy barns, grain and feed systems, and the farm buildings around them, serving Lebanon, Lancaster and Berks counties in Central Pennsylvania. From new builds and service upgrades to ventilation, controls, motors and standby power, Slon Electric builds and maintains the electrical systems a working farm depends on.",
 
   hero: {
     src: "/photos/services/agricultural-electrical-services.webp",

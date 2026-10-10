@@ -8,7 +8,7 @@ const service: Service = {
   summary:
     "Commercial electrical contracting across Lebanon, Lancaster and Berks counties: fit outs, remodels, service and panel upgrades, lighting, parking lots and EV charging.",
   lead:
-    "A commercial job is rarely decided by the wiring. It is decided by whether the electrical work lands on the day the ceiling grid goes in, whether the panel schedule matches what the inspector finds, and whether the business can keep trading while a crew is in the building. We work across Lebanon, Lancaster and Berks counties on fit outs, remodels, additions and the service calls that follow them.",
+    "Electrical work for offices, retail, restaurants and the commercial buildings around them, serving Lebanon, Lancaster and Berks counties in Central Pennsylvania. From tenant fit outs and service upgrades to interior and exterior lighting, equipment connections and the service calls that follow, Slon Electric builds and maintains the electrical systems a commercial building depends on.",
 
   hero: {
     src: "/photos/services/commercial-electrical-services.webp",

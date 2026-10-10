@@ -173,7 +173,17 @@ export default async function ServicePage({
             </h1>
           </div>
 
-          <p className="mt-8 max-w-[720px] text-[17px] leading-8 text-gray-300 lg:text-[18px]">{s.lead}</p>
+          {/*
+            RichText, не голый текст: у industrial-electrical-services здесь
+            годами жила markdown-ссылка на источник (цитата Siemens), которая
+            рендерилась как сырой текст "[текст](url)" — RichText её нигде
+            не раскрывал, потому что сюда его никогда не подключали. Сама
+            цитата переехала в первый блок текста ниже при правке 10.10.2026,
+            но баг у поля lead остаётся багом и для любого будущего текста.
+          */}
+          <p className="mt-8 max-w-[720px] text-[17px] leading-8 text-gray-300 lg:text-[18px]">
+            <RichText text={s.lead} />
+          </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a href={`tel:${site.phoneHref}`} className="btn btn_solid !px-9 !py-4 !text-[15px]">
