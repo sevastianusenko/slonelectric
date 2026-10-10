@@ -44,7 +44,7 @@ const service: Service = {
       body: [
         "Ammonia is the first reason. In a poultry house or a bedded pack barn it attacks aluminium housings, creeps into the driver compartment and corrodes terminals from the inside. A high bay taken off a general commercial catalogue often lasts two or three years in that air and then starts failing one fixture at a time, which is the expensive way to find out.",
         "Washdown is the second. Article 547 of the National Electrical Code requires luminaires in these buildings to keep out dust and moisture, to be watertight where the space is washed for sanitation, and to be guarded where they can be struck. In practice that means a sealed gasketed fixture with an ingress rating you can point at, not a linear strip with open end caps. The article is covered in plain language in [what the code requires in a barn](/blog/nec-547-agricultural-wiring), and the wiring feeding those fixtures in [choosing a wiring method for agricultural buildings](/blog/barn-wiring-methods).",
-        "The third difference is control. Poultry houses run a lighting program, so fixtures have to dim deeply and smoothly without flicker and the driver has to match what the controller puts out. Dairy is a different problem again, since a free stall barn is lit both for a long day program and for somebody walking the alley at two in the morning. Both are in [the free stall barn lighting job](/projects/free-stall-barn-lighting) and [the poultry house ventilation and power job](/projects/poultry-house-ventilation-power).",
+        "The third difference is control. A broiler lighting program commonly runs 3 to 5 footcandles along the feeders during brood and dims down to a quarter footcandle or less by the end of the flock, which [Mississippi State University Extension sets out fixture by fixture](https://extension.msstate.edu/publications/broiler-house-lamp-and-light-dimmer-basics), and the dimmer has to be a trailing edge type. A TRIAC dimmer built for an incandescent bulb does not see an LED driver as the resistive load it expects, and the lights flicker or fail outright rather than dim smoothly. Dairy runs the opposite program: long day lighting holds 16 to 18 hours at 15 to 20 footcandles followed by 6 to 8 hours of near darkness, and [Michigan State University Extension has documented herds gaining close to 10 percent more milk](https://www.canr.msu.edu/news/increase_milk_production_and_reduce_energy_consumption_with_long_day_lighti) on that schedule. Both are in [the free stall barn lighting job](/projects/free-stall-barn-lighting) and [the poultry house ventilation and power job](/projects/poultry-house-ventilation-power).",
       ],
     },
     {
@@ -248,6 +248,14 @@ const service: Service = {
     {
       q: "Is a pole barn different from a warehouse?",
       a: "Yes. The structure gives fewer mounting points and longer spans, and if animals or bedding are in it the fixture has to suit that air. What changes is covered in [wiring a pole building from the shell](/projects/pole-barn-from-the-shell).",
+    },
+    {
+      q: "What footcandle level does a poultry house actually need?",
+      a: "It depends on the bird's age, not a single number for the whole flock. Mississippi State University Extension sets 3 to 5 footcandles along the feeders during brood, dimmed down to a quarter footcandle or less as the birds near market weight, and the dimmer has to be a trailing edge type to run an LED driver without flicker.",
+    },
+    {
+      q: "Does long day lighting on a dairy really increase milk production?",
+      a: "Published trials say yes. Michigan State University Extension documents herds on 16 to 18 hours of light at 15 to 20 footcandles, followed by 6 to 8 hours of near darkness, gaining close to 10 percent more milk than cows on natural daylight alone.",
     },
     {
       q: "Do you do parking lot and yard lighting?",
