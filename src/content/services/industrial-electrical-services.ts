@@ -291,6 +291,74 @@ const service: Service = {
     "low-voltage-structured-wiring",
   ],
 
+  /**
+   * Девять карточек сразу после героя, как на agricultural и commercial:
+   * категории работы из scope и сквозные услуги сайта сведены в один
+   * список без дублей. "Plant distribution" и electrical-service-
+   * upgrades были одной темой, то же с "Plant maintenance and testing"
+   * и electrical-preventive-maintenance — здесь по одной объединённой
+   * карточке на каждую. Заголовки нарочно называют "plant"/"industrial",
+   * а не общими словами с главной.
+   */
+  highlightCards: [
+    {
+      title: "Industrial machine connection",
+      body: "The last few feet to the machine, where most expensive mistakes live.",
+      href: "/projects/machine-connection-motor-control",
+      photoProject: "machine-connection-motor-control",
+    },
+    {
+      title: "Motors, drives and plant control",
+      body: "Everything that makes a motor start, stop and behave the way the process needs it to.",
+      href: "/projects/food-plant-equipment-power",
+      photoProject: "food-plant-equipment-power",
+    },
+    {
+      title: "Plant process and instrumentation",
+      body: "The wiring that carries information rather than power, kept apart from the circuits it reports on.",
+      href: "/projects/instrument-racks-process-wiring",
+      photoProject: "instrument-racks-process-wiring",
+    },
+    {
+      title: "Plant shutdown and outage work",
+      body: "Work built around a window somebody else set, staged and ready before the line goes down.",
+      href: "/projects/plant-wiring-during-shutdown",
+      photoProject: "plant-wiring-during-shutdown",
+    },
+    {
+      title: "Plant distribution and service upgrades",
+      body: "From the incoming service down to the last subpanel, sized from an honest load calculation.",
+      href: "/electrical-service-upgrades",
+      photoProject: "three-phase-distribution-upgrade",
+    },
+    {
+      title: "Plant maintenance and infrared testing",
+      body: "Thermal imaging finds a connection running warm years before it would otherwise fail.",
+      href: "/electrical-preventive-maintenance",
+      photoProject: "infrared-survey-switchboard",
+    },
+    {
+      title: "Control panels for industrial equipment",
+      body: "Built and wired for the person who opens it at two in the morning without having built it.",
+      href: "/control-panels-machine-wiring",
+      photoProject: "machine-connection-motor-control",
+      photoIndex: 1,
+    },
+    {
+      title: "Standby power for plant operations",
+      body:
+        "Sized from the loads that cannot stop, with transfer equipment that can never backfeed the utility.",
+      href: "/standby-generator-installation",
+      photoProject: "standby-generator-transfer-switch",
+    },
+    {
+      title: "Industrial low voltage and controls wiring",
+      body: "Signal and control cabling run and shielded apart from the motor circuits it sits beside.",
+      href: "/low-voltage-structured-wiring",
+      photoProject: "comms-room-structured-cabling",
+    },
+  ],
+
   keywords: [
     "industrial electrical contractor",
     "industrial electrical services",

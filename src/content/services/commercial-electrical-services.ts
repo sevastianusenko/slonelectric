@@ -290,6 +290,77 @@ const service: Service = {
     "electrical-preventive-maintenance",
   ],
 
+  /**
+   * Девять карточек сразу после героя, как на agricultural: категории
+   * работы из scope и сквозные услуги сайта сведены в один список без
+   * дублей. "Interior lighting" и commercial-led-lighting были одной
+   * темой, то же с "Capacity and distribution" и electrical-service-
+   * upgrades — здесь это по одной объединённой карточке. Заголовки
+   * нарочно называют "Commercial", а не общими словами с главной.
+   */
+  highlightCards: [
+    {
+      title: "Commercial fit outs and remodels",
+      body: "From a landlord shell or a space changing use, wired to the new layout before the walls close.",
+      href: "/projects/retail-fit-out-wiring",
+      photoProject: "retail-fit-out-wiring",
+    },
+    {
+      title: "Commercial interior and LED lighting",
+      body:
+        "New layouts and retrofits of what is already there, placed where the work happens, with a bill that drops after.",
+      href: "/commercial-led-lighting",
+      photoProject: "office-remodel-power-lighting",
+    },
+    {
+      title: "Commercial site and parking lot lighting",
+      body: "Lots, walkways and building exteriors: the parts that get noticed at night and in winter.",
+      href: "/projects/parking-lot-lighting",
+      photoProject: "parking-lot-lighting",
+    },
+    {
+      title: "Commercial equipment and specialist rooms",
+      body: "Panel rooms, elevator supplies and the rooms with a maintenance schedule attached to them.",
+      href: "/projects/commercial-panel-room-feeders",
+      photoProject: "commercial-panel-room-feeders",
+    },
+    {
+      title: "Commercial power, panels and service upgrades",
+      body:
+        "Everything that decides whether the building can take more, sized from an honest load calculation.",
+      href: "/electrical-service-upgrades",
+      photoProject: "panel-upgrade-myerstown",
+    },
+    {
+      title: "Commercial service work after handover",
+      body:
+        "What buildings actually call about once they are open, answered by a crew that already knows the panel.",
+      href: "/projects/emergency-winter-failure",
+      photoProject: "emergency-winter-failure",
+    },
+    {
+      title: "Commercial preventive maintenance and surveys",
+      body:
+        "Thermal imaging finds a loose connection while it is still only warm, the cheapest moment to find it.",
+      href: "/electrical-preventive-maintenance",
+      photoProject: "preventive-maintenance-arc-flash",
+    },
+    {
+      title: "Commercial and fleet EV charging",
+      body:
+        "The hard question is rarely the charger. It is whether the building can feed it without a distribution rebuild.",
+      href: "/ev-charging-installation",
+      photoProject: "ev-charging-commercial-site",
+    },
+    {
+      title: "Commercial low voltage and structured wiring",
+      body:
+        "Data, controls and monitoring cabling treated as its own installation with its own rules, not an afterthought.",
+      href: "/low-voltage-structured-wiring",
+      photoProject: "comms-room-structured-cabling",
+    },
+  ],
+
   keywords: [
     "commercial electrician",
     "commercial electrical services",
