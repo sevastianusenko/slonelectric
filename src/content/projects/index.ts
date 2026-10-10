@@ -2,6 +2,8 @@ import type { Project } from "./types";
 
 import freeStallBarnLighting from "./free-stall-barn-lighting";
 import poultryHouseVentilationPower from "./poultry-house-ventilation-power";
+import poultryHouseNewConstruction from "./poultry-house-new-construction";
+import poultryHouseEquipmentWiring from "./poultry-house-equipment-wiring";
 import grainSystemPowerControls from "./grain-system-power-controls";
 import farmServiceEntranceUpgrade from "./farm-service-entrance-upgrade";
 import dairyParlourBulkTankWiring from "./dairy-parlour-bulk-tank-wiring";
@@ -40,6 +42,8 @@ import preventiveMaintenanceArcFlash from "./preventive-maintenance-arc-flash";
 export const projectList: Project[] = [
   freeStallBarnLighting,
   poultryHouseVentilationPower,
+  poultryHouseNewConstruction,
+  poultryHouseEquipmentWiring,
   grainSystemPowerControls,
   farmServiceEntranceUpgrade,
   dairyParlourBulkTankWiring,
