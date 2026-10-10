@@ -294,6 +294,43 @@ const service: Service = {
     "emergency-electrician",
   ],
 
+  seeAlsoCards: [
+    {
+      slug: "standby-generator-installation",
+      title: "Standby power for livestock operations",
+      body:
+        "Sized from the loads that cannot stop, not from the size of the service. The fans, the pumps and the alarm that calls you keep running when the line goes down.",
+      photoProject: "farm-standby-generator",
+    },
+    {
+      slug: "electrical-service-upgrades",
+      title: "Farm panel and service upgrades",
+      body:
+        "For a service that grew one subpanel at a time since the farm was smaller. Sized from an honest load calculation, cut over in the shortest window the work allows.",
+      photoProject: "farm-service-entrance-upgrade",
+    },
+    {
+      slug: "commercial-led-lighting",
+      title: "Farm and barn lighting",
+      body:
+        "Fewer fixtures than you had, placed where the work actually happens, with a bill that drops the month after. Barns and yards, not a fixture count on a spec sheet.",
+      photoProject: "free-stall-barn-lighting",
+    },
+    {
+      slug: "control-panels-machine-wiring",
+      title: "Control panels for farm equipment",
+      body:
+        "Built and wired for the person who opens it at two in the morning without having built it. Starters, drives and the connections out to the motors that earn the money.",
+      photoProject: "poultry-house-equipment-wiring",
+    },
+    {
+      slug: "emergency-electrician",
+      title: "24 hour farm emergency service",
+      body:
+        "A ventilation failure at two in the morning does not wait until Monday. Answered around the clock, and told straight whether it is an emergency or something that can wait.",
+    },
+  ],
+
   keywords: [
     "agricultural electrician",
     "agricultural electrical services",

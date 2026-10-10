@@ -77,6 +77,21 @@ export default async function ServicePage({
   const scopeCards = s.scope
     .filter((g) => g.project && projectMap[g.project])
     .map((g) => ({ group: g, project: projectMap[g.project as string] }));
+  /**
+   * Карточки услуг из seeAlso: там, где задан seeAlsoCards, карточка
+   * одета под эту страницу (свой заголовок, текст и фото с объекта вместо
+   * обложки услуги). Остальные слаги из seeAlso без переопределения
+   * заполняются как раньше, обложкой самой услуги.
+   */
+  const alsoCards = s.seeAlso.map((slug) => {
+    const override = s.seeAlsoCards?.find((c) => c.slug === slug);
+    if (override) {
+      const photo = override.photoProject ? projectMap[override.photoProject]?.photos[0] : undefined;
+      return { slug, title: override.title, body: override.body, photo };
+    }
+    const svc = serviceMap[slug];
+    return svc ? { slug, title: svc.h1, body: svc.summary, photo: undefined } : null;
+  }).filter((c): c is NonNullable<typeof c> => !!c);
 
   /**
    * Кадры для блоков берём из наших же проектов по этой услуге: своего фото
@@ -234,53 +249,74 @@ export default async function ServicePage({
 
       {/*
         ── Короткий обзор: карточки по категориям работы ───────────
-        Просьба клиента 10.10.2026, дважды уточнена 11.10.2026: первое,
-        что видит фермер после героя, не должно быть сразу техническим
-        текстом. Сначала была сетка фото с подписями, затем карточки общих
-        услуг сайта (как на главной) — но клиент справедливо заметил, что
-        для агро это должны быть не общие услуги (генератор, освещение),
-        а сами категории фермерской работы: вентиляция птичника, корм
-        и зерно, молочная ферма и так далее, с реальным фото объекта.
-        Источник — те же группы `s.scope`, что и в блоке "What this covers"
-        ниже по странице (полный список пунктов там же, без изменений),
-        просто у части групп теперь есть `project` — слаг кейса с реальным
-        фото, который и показываем тут картой. Группы без project не
-        попадают в эту карточную секцию, а остаются в полном списке ниже.
+        Просьба клиента 10.10.2026, уточнена 11.10.2026: первое, что видит
+        фермер после героя, не должно быть сразу техническим текстом.
+        Клиент попросил категории фермерской работы с реальным фото
+        объекта: вентиляция птичника, корм и зерно, молочная ферма и так
+        далее. Источник — те же группы `s.scope`, что и в блоке "What this
+        covers" ниже по странице (полный список пунктов там же, без
+        изменений), просто у части групп теперь есть `project` — слаг
+        кейса с реальным фото, который и показываем тут картой. Группы
+        без project не попадают сюда, а остаются в полном списке ниже.
         Пока project проставлен только на agricultural: на остальных
-        страницах scopeCards пустой, и секция откатывается на прежние
-        карточки общих услуг (also), чтобы не терять блок целиком.
+        страницах эта секция просто не рендерится.
       */}
-      {(scopeCards.length > 0 || also.length > 0) && (
+      {scopeCards.length > 0 && (
         <section className="relative overflow-hidden bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-[1140px] px-4">
             <Rail label="What we do" />
             <h2 className="mt-7 max-w-[680px] text-[24px] font-extrabold leading-tight text-ink-900 lg:text-[32px]">
-              {scopeCards.length > 0 ? "The kinds of work this covers" : "The services behind this work"}
+              The kinds of work this covers
             </h2>
 
             <Reveal anim="fade-in" className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-              {scopeCards.length > 0
-                ? scopeCards.map(({ group, project }, i) => (
-                    <ServiceCard
-                      key={group.group}
-                      href={`/projects/${project.slug}`}
-                      photo={project.photos[0]}
-                      title={group.group}
-                      body={group.note ?? project.summary}
-                      index={i}
-                      priority={i < 3}
-                    />
-                  ))
-                : also.map((o, i) => (
-                    <ServiceCard
-                      key={o.slug}
-                      slug={o.slug}
-                      title={o.h1}
-                      body={o.summary}
-                      index={i}
-                      priority={i < 3}
-                    />
-                  ))}
+              {scopeCards.map(({ group, project }, i) => (
+                <ServiceCard
+                  key={group.group}
+                  href={`/projects/${project.slug}`}
+                  photo={project.photos[0]}
+                  title={group.group}
+                  body={group.note ?? project.summary}
+                  index={i}
+                  priority={i < 3}
+                />
+              ))}
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/*
+        ── Карточки услуг сайта, в агро-одежде ─────────────────────
+        Клиент 11.10.2026: старые карточки общих услуг убирать было не
+        нужно, надо было добавить новые рядом, а не вместо. Эта секция —
+        те же услуги из seeAlso, но там, где задан seeAlsoCards, карточка
+        не повторяет один в один то, что уже видно на главной: свой
+        заголовок ("Farm and barn lighting" вместо "Commercial and
+        agricultural LED lighting"), свой текст и фото с реального
+        фермерского объекта вместо обложки услуги. Ведёт всё равно на ту
+        же страницу услуги. Там, где seeAlsoCards не задан (остальные
+        страницы), карточка собирается как раньше, обложкой услуги.
+      */}
+      {alsoCards.length > 0 && (
+        <section className="relative overflow-hidden bg-paper-100 py-12 lg:py-16">
+          <div className="mx-auto max-w-[1140px] px-4">
+            <Rail label="Services" />
+            <h2 className="mt-7 max-w-[680px] text-[24px] font-extrabold leading-tight text-ink-900 lg:text-[32px]">
+              The services behind this work
+            </h2>
+
+            <Reveal anim="fade-in" className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+              {alsoCards.map((c, i) => (
+                <ServiceCard
+                  key={c.slug}
+                  slug={c.slug}
+                  photo={c.photo}
+                  title={c.title}
+                  body={c.body}
+                  index={i}
+                />
+              ))}
             </Reveal>
           </div>
         </section>
