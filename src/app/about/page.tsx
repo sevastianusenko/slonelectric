@@ -13,7 +13,7 @@ import { site, aboutPage } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About Slon Electric | Myerstown PA Electrical Contractor",
   description:
-    "A family run electrical contractor in Myerstown PA, led by an electrician with more than eighteen years running jobs in agricultural, commercial and industrial work. Our mission, goal and how we work.",
+    "A family run electrical contractor in Myerstown PA, with a team that brings more than eighteen years of hands-on experience to agricultural, commercial and industrial work. Our mission, goal and how we work.",
   alternates: { canonical: "/about" },
 };
 
@@ -283,9 +283,8 @@ export default function AboutPage() {
               Tell us what the building has to run
             </h2>
             <p className="mt-4 text-[16px] leading-7 text-gray-300">
-              {site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}.
-              Working across Lebanon, Lancaster and Berks counties and the ones around them,{" "}
-              {site.hours.toLowerCase()}.
+              Based in {site.address.city}, Pennsylvania. Working across Lebanon, Lancaster and
+              Berks counties and the ones around them, {site.hours.toLowerCase()}.
             </p>
           </div>
           <a href={`tel:${site.phoneHref}`} className="btn btn_solid shrink-0 !px-8 !py-4 !text-[15px]">

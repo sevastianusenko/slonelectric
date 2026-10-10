@@ -310,7 +310,7 @@ export default async function ArticlePage({
               </h2>
               <p className="mt-5 max-w-[680px] text-[16px] leading-7 text-gray-300">{a.closing}</p>
               <p className="mt-4 max-w-[680px] text-[16px] leading-7 text-gray-300">
-                Slon Electric is a family run electrical contractor on Yeagley Road in Myerstown,
+                Slon Electric is a family run electrical contractor in Myerstown,
                 Lebanon County. Anatoly runs the crew and usually answers the phone himself. We work
                 on farms, in plants and in commercial buildings across Lebanon, Lancaster and Berks
                 counties, we are rated {site.reviews.rating.toFixed(1)} on Google, and the phone is

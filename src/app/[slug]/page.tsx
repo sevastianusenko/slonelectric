@@ -665,8 +665,8 @@ export default async function ServicePage({
               Tell us what the building has to run
             </h2>
             <p className="mt-5 text-[16px] leading-7 text-gray-300">
-              Anatoly runs the crew and usually answers the phone himself. Based on{" "}
-              {site.address.street} in {site.address.city}, working across Lebanon, Lancaster and
+              Anatoly runs the crew and usually answers the phone himself. Based in{" "}
+              {site.address.city}, working across Lebanon, Lancaster and
               Berks counties, {site.hours.toLowerCase()}.
             </p>
           </div>
