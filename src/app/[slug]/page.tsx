@@ -73,6 +73,10 @@ export default async function ServicePage({
   const articles = s.related.articles.map((a) => articleMap[a]).filter(Boolean);
   const also = s.seeAlso.map((x) => serviceMap[x]).filter(Boolean);
   const scopeCount = s.scope.reduce((n, g) => n + g.items.length, 0);
+  /** Группы scope, у которых есть привязанный проект: карточки с реальным фото сразу после героя. */
+  const scopeCards = s.scope
+    .filter((g) => g.project && projectMap[g.project])
+    .map((g) => ({ group: g, project: projectMap[g.project as string] }));
 
   /**
    * Кадры для блоков берём из наших же проектов по этой услуге: своего фото
@@ -229,36 +233,54 @@ export default async function ServicePage({
       </section>
 
       {/*
-        ── Короткий обзор: карточки услуг, без текста ──────────────
-        Просьба клиента 10.10.2026, уточнена 11.10.2026: первое, что видит
-        фермер или заказчик после героя, не должно быть сразу техническим
-        текстом. Сначала была простая сетка фото с подписями, но клиент
-        попросил именно карточки — как на главной, с картинкой и названием
-        услуги, и именно те услуги, что относятся к этой категории, а не
-        весь список по сайту. Берём их из `also` (seeAlso), который уже
-        собран для этой страницы ниже по тексту как "Related services",
-        переиспользуем тот же набор. Подробный разбор по категориям
-        (s.scope) и сами разделы идут ниже по странице без изменений.
+        ── Короткий обзор: карточки по категориям работы ───────────
+        Просьба клиента 10.10.2026, дважды уточнена 11.10.2026: первое,
+        что видит фермер после героя, не должно быть сразу техническим
+        текстом. Сначала была сетка фото с подписями, затем карточки общих
+        услуг сайта (как на главной) — но клиент справедливо заметил, что
+        для агро это должны быть не общие услуги (генератор, освещение),
+        а сами категории фермерской работы: вентиляция птичника, корм
+        и зерно, молочная ферма и так далее, с реальным фото объекта.
+        Источник — те же группы `s.scope`, что и в блоке "What this covers"
+        ниже по странице (полный список пунктов там же, без изменений),
+        просто у части групп теперь есть `project` — слаг кейса с реальным
+        фото, который и показываем тут картой. Группы без project не
+        попадают в эту карточную секцию, а остаются в полном списке ниже.
+        Пока project проставлен только на agricultural: на остальных
+        страницах scopeCards пустой, и секция откатывается на прежние
+        карточки общих услуг (also), чтобы не терять блок целиком.
       */}
-      {also.length > 0 && (
+      {(scopeCards.length > 0 || also.length > 0) && (
         <section className="relative overflow-hidden bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-[1140px] px-4">
             <Rail label="What we do" />
             <h2 className="mt-7 max-w-[680px] text-[24px] font-extrabold leading-tight text-ink-900 lg:text-[32px]">
-              The services behind this work
+              {scopeCards.length > 0 ? "The kinds of work this covers" : "The services behind this work"}
             </h2>
 
             <Reveal anim="fade-in" className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-              {also.map((o, i) => (
-                <ServiceCard
-                  key={o.slug}
-                  slug={o.slug}
-                  title={o.h1}
-                  body={o.summary}
-                  index={i}
-                  priority={i < 3}
-                />
-              ))}
+              {scopeCards.length > 0
+                ? scopeCards.map(({ group, project }, i) => (
+                    <ServiceCard
+                      key={group.group}
+                      href={`/projects/${project.slug}`}
+                      photo={project.photos[0]}
+                      title={group.group}
+                      body={group.note ?? project.summary}
+                      index={i}
+                      priority={i < 3}
+                    />
+                  ))
+                : also.map((o, i) => (
+                    <ServiceCard
+                      key={o.slug}
+                      slug={o.slug}
+                      title={o.h1}
+                      body={o.summary}
+                      index={i}
+                      priority={i < 3}
+                    />
+                  ))}
             </Reveal>
           </div>
         </section>

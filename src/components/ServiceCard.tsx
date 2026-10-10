@@ -5,29 +5,39 @@ import { serviceMap } from "@/content/services";
 
 /**
  * Карточка услуги: кадр с объекта, при наведении уходит в графит и выезжает
- * описание. Живёт в двух местах, на главной и на /services, поэтому вынесена
- * из страниц: иначе две копии неизбежно разъедутся.
+ * описание. Живёт в трёх местах (главная, /services, и блок "что это такое"
+ * на страницах услуг), поэтому вынесена из страниц: иначе копии неизбежно
+ * разъедутся.
+ *
+ * По умолчанию карточка берёт фото и ссылку из `serviceMap[slug]`. Там,
+ * где карточка ведёт не на услугу, а на проект (кадр реального объекта
+ * вместо обложки услуги), `href` и `photo` передаются напрямую и
+ * перекрывают поиск по slug.
  *
  * Высота фиксирована там, где есть ховер, иначе карточка прыгала бы при
  * раскрытии описания. На тач-экранах описание видно всегда, и там карточка
  * растёт под текст, а не обрезает его.
  */
 export default function ServiceCard({
-  slug, title, body, tall = false, priority = false, index = 0,
+  slug, title, body, tall = false, priority = false, index = 0, href, photo,
 }: {
-  slug: string;
+  slug?: string;
   title: string;
   body: string;
   tall?: boolean;
   priority?: boolean;
   index?: number;
+  href?: string;
+  photo?: { src: string; alt: string };
 }) {
-  const s = serviceMap[slug];
-  if (!s) return null;
+  const s = slug ? serviceMap[slug] : undefined;
+  const linkHref = href ?? (slug ? `/${slug}` : undefined);
+  const img = photo ?? s?.hero;
+  if (!linkHref || !img) return null;
 
   return (
     <Link
-      href={`/${slug}`}
+      href={linkHref}
       className="rise group relative block focus:outline-none"
       style={{ "--d": `${100 + index * 80}ms` } as React.CSSProperties}
     >
@@ -39,8 +49,8 @@ export default function ServiceCard({
         }`}
       >
         <Image
-          src={s.hero.src}
-          alt={s.hero.alt}
+          src={img.src}
+          alt={img.alt}
           fill
           sizes={
             tall

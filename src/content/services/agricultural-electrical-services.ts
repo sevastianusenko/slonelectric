@@ -54,6 +54,7 @@ const service: Service = {
     {
       group: "Poultry houses",
       note: "Broiler, layer and pullet houses, plus the equipment rooms behind them.",
+      project: "poultry-house-ventilation-power",
       items: [
         "Tunnel and minimum ventilation fan circuits",
         "Variable speed fan wiring and drive replacement",
@@ -69,6 +70,7 @@ const service: Service = {
     {
       group: "Dairy barns and parlours",
       note: "Free stall, tie stall, parlour and bulk tank rooms.",
+      project: "dairy-parlour-bulk-tank-wiring",
       items: [
         "Milking parlour power and equipment connections",
         "Vacuum pump and milk pump motor circuits",
@@ -84,6 +86,7 @@ const service: Service = {
     {
       group: "Grain and feed handling",
       note: "Dryers, legs, bins and the controls that sequence them.",
+      project: "grain-system-power-controls",
       items: [
         "Grain dryer power and control wiring",
         "Bucket elevator and leg motor circuits",
@@ -98,6 +101,7 @@ const service: Service = {
     {
       group: "Farm power and distribution",
       note: "Everything between the utility and the building panels.",
+      project: "farm-service-entrance-upgrade",
       items: [
         "Farm service entrance replacement and upsizing",
         "Meter socket, main disconnect and CT cabinet work",
@@ -113,6 +117,7 @@ const service: Service = {
     {
       group: "Standby power and alarms",
       note: "What keeps the critical list running when the line drops.",
+      project: "farm-standby-generator",
       items: [
         "Standby generator sizing, siting and installation",
         "Automatic and manual transfer switch installation",
@@ -127,6 +132,7 @@ const service: Service = {
     {
       group: "Shops, sheds and farm buildings",
       note: "The buildings that are not livestock but still on the yard.",
+      project: "pole-barn-from-the-shell",
       items: [
         "Pole barn wiring from the empty shell",
         "Shop power, welder receptacles and compressor circuits",
