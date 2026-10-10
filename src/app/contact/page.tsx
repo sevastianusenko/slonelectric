@@ -139,7 +139,7 @@ export default function ContactPage() {
             <div className="left-shadow">
               <Photo
                 src="/photos/company-van.webp"
-                alt="Slon Electric service van parked at a customer property"
+                alt="Branded Slon Electric service van with logo and phone number"
                 sizes="(max-width: 1140px) 100vw, 560px"
                 className="aspect-[3/2] w-full"
               />
