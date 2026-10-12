@@ -12,8 +12,8 @@ const project: Project = {
 
   photos: [
     {
-      src: "/photos/projects/dairy-parlour-bulk-tank-wiring-1.webp",
-      alt: "Hand terminating cable at a bulk tank installation",
+      src: "/photos/projects/free-stall-barn-lighting-1.webp",
+      alt: "Lit free stall dairy barn with cows at the feed alley",
     },
     {
       src: "/photos/projects/dairy-parlour-bulk-tank-wiring-2.webp",
