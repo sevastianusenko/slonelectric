@@ -45,6 +45,10 @@ const service: Service = {
     },
     {
       heading: "Made safe tonight, finished in daylight",
+      photo: {
+        src: "/photos/services/emergency-made-safe-daylight.webp",
+        alt: "Temporary service connection made safe at a building under construction, tools staged nearby",
+      },
       body: [
         "A lot of night work splits into two halves. The first is making the situation safe and getting back whatever can be got back: isolating a faulted circuit, replacing a failed breaker or contactor from the van, re-terminating a burned lug, feeding the critical loads temporarily so the fans run and the cooler holds. That half we can usually do on the night.",
         "The second half often cannot be done at three in the morning, and pretending otherwise helps nobody. Meter equipment and service conductors mean the utility has to be involved. A burned panel is a replacement rather than a repair, which is a scheduled job with a permit and an inspection, as [when a panel needs replacing rather than repairing](/blog/signs-your-panel-needs-replacing) explains. Mast work in ice or wind waits for weather. Anything we leave temporary is written down as temporary, with what remains outstanding.",
