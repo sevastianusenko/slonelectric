@@ -50,8 +50,8 @@ const service: Service = {
     {
       heading: "Safety circuits and labels that survive you",
       photo: {
-        src: "/photos/projects/dairy-parlour-bulk-tank-wiring-1.webp",
-        alt: "Hand terminating cable with wire nuts inside a control enclosure",
+        src: "/photos/services/control-panels-safety-circuits.webp",
+        alt: "Large open control panel cabinet with contactors, breakers and extensive labeled wiring",
       },
       body: [
         "An e stop string is not an ordinary control circuit and should not be wired like one. NFPA 79 describes stop categories, and the difference matters: a category 0 stop removes power immediately, a category 1 brings the machine to a controlled stop first. Which one a machine needs depends on what it does when power disappears, since some are more dangerous stopped instantly.",
