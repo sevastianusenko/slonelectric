@@ -22,7 +22,7 @@ const project: Project = {
   photos: [
     {
       src: "/photos/projects/pole-barn-from-the-shell-1.webp",
-      alt: "Interior of a new pole building with steel ceiling, timber framing and conduit runs on a post",
+      alt: "New pole building seen from outside, with the open bay door showing the timber roof framing",
     },
     {
       src: "/photos/projects/pole-barn-from-the-shell-2.webp",
