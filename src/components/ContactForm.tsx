@@ -4,20 +4,13 @@ import { useId, useState } from "react";
 import { site } from "@/lib/content";
 
 /**
- * Раньше форма уходила на FormSubmit обычным POST без единой строчки JS —
- * страница целиком перезагружалась через `?sent=1`. Клиент принёс готовый
- * код на Web3Forms со своим access_key (аккаунт уже оформлен) — у него
- * другой протокол, через fetch, поэтому форма стала клиентским компонентом:
- * без этого useState/onSubmit в Next не собрать.
- *
- * access_key у Web3Forms — не секрет в духе серверного API-ключа: он живёт
- * в браузере у каждого посетителя открытым текстом, так и задумано,
- * Web3Forms сам проверяет ключ и домен на своей стороне.
- *
- * Honeypot — по документации Web3Forms это обязательно `name="botcheck"`
- * и `type="checkbox"`, другое имя или тип сервис просто не распознает.
+ * Форма шла сначала на FormSubmit, потом на Web3Forms (клиентский
+ * access_key, напрямую из браузера). Клиент подтвердил домен в Resend,
+ * у которого ключ серверный и секретный — его нельзя класть в код
+ * страницы, поэтому POST теперь уходит на свой route handler
+ * (`/api/contact`), а он уже обращается к Resend с ключом из переменной
+ * окружения. Honeypot-поле осталось то же, просто проверяется на сервере.
  */
-const ACCESS_KEY = "0081e062-be1c-430d-a30f-c59b295496bd";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -29,10 +22,9 @@ export default function ContactForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    formData.append("access_key", ACCESS_KEY);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
       });
@@ -62,9 +54,6 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="mt-8 space-y-5">
-      {/* Настройки Web3Forms — не поля для посетителя. */}
-      <input type="hidden" name="subject" value="New job inquiry — slonelectric.com" />
-      <input type="hidden" name="from_name" value="slonelectric.com contact form" />
       {/* Honeypot: скрыт для человека, боты обычно заполняют все поля подряд. */}
       <label htmlFor={honeyId} className="hidden" aria-hidden="true">
         Leave this field blank

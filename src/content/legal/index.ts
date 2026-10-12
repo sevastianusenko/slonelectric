@@ -3,14 +3,18 @@
  *
  * ВАЖНО. Политика приватности описывает то, что сайт делает **на самом деле**,
  * а не то, что обычно пишут в шаблонах. Проверено 25.09.2026, обновлено
- * 03.10.2026, когда форму перевели с FormSubmit на Web3Forms (другой
- * сторонний обработчик, та же роль — само обещание политике не изменилось,
- * поменялось только название сервиса):
+ * 11.10.2026, когда форму перевели с Web3Forms на Resend (клиент подтвердил
+ * свой домен в Resend). Разница не только в названии сервиса: Web3Forms
+ * принимал данные прямо из браузера, а Resend требует секретный серверный
+ * ключ, поэтому теперь форма сначала идёт на свой route handler
+ * (`/api/contact`, без базы данных и без записи на диск, только пересылка),
+ * а уже оттуда письмом через Resend:
  *   - сторонних скриптов и аналитики на страницах нет;
  *   - куки сайт не ставит, localStorage и sessionStorage не использует;
- *   - на /contact есть форма — единственная на всём сайте — она отправляет
- *     данные напрямую в Web3Forms (web3forms.com), сторонний сервис
- *     приёма писем, без своего сервера и без хранения на нашей стороне;
+ *   - на /contact есть форма — единственная на всём сайте — она проходит
+ *     через собственный серверный обработчик сайта и уходит письмом через
+ *     Resend (resend.com), стороннего отправителя почты; данные нигде
+ *     не сохраняются, только передаются дальше;
  *   - на /contact встроена карта Google Maps (iframe) — Google получает
  *     обычные технические данные о запросе так же, как любой сайт с картой;
  *   - шрифты Manrope отдаются со своего домена через next/font, то есть
@@ -61,7 +65,7 @@ export const privacy: LegalPage = {
     {
       heading: "The form on the contact page",
       body: [
-        "The one form on this site, on the Contact page, is delivered by Web3Forms, a third party service. When you submit it, what you typed is sent to Web3Forms and from there by email to us. Web3Forms is the processor for that one moment of delivery; we are not able to see or control what Web3Forms itself logs on its own servers, and their own policy governs that.",
+        "The one form on this site, on the Contact page, is handled by our own server for the moment it takes to pass the message on, then delivered by email through Resend, a third party sending service, to our inbox. Nothing you submit is written to a database or kept on our server after that; it passes through on its way to the email that reaches us. Resend is the processor for that one moment of delivery, and their own policy governs what they log on their side.",
         "Once the email reaches us, it sits in an ordinary inbox like any other message. Everywhere else on this site, contacting us means a phone call or an email you write yourself, and in both of those you decide what to tell us directly, with nothing in between.",
         "What you tell us, by any of these routes, we keep for the ordinary reason a contractor keeps it: to quote the job, to do the work, to come back if something needs attention afterwards, and to meet the record keeping any business has to meet. We do not add anybody to a marketing list from a form submission or a call, and we do not pass details to anybody outside the work itself.",
       ],
