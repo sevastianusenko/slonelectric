@@ -17,7 +17,7 @@ const project: Project = {
     },
     {
       src: "/photos/projects/poultry-house-ventilation-power-2.webp",
-      alt: "Empty agricultural building under construction with timber walls and conduit runs",
+      alt: "Curtain machine wiring along the ceiling of a poultry house aisle, cable tied and connected",
     },
   ],
 
