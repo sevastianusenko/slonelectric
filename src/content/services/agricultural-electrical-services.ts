@@ -18,6 +18,10 @@ const service: Service = {
   sections: [
     {
       heading: "Three layers of it, and the one people forget",
+      photo: {
+        src: "/photos/services/agricultural-electrical-services-worker-portrait.webp",
+        alt: "Electrician in protective coveralls standing in front of a bank of control panels",
+      },
       body: [
         "The work splits into three groups. There is the power itself: the service entrance, the distribution across the yard, the feeders to each building. There is the equipment side: ventilation, controllers, augers, dryers, milking and cooling. And there is the layer most people only think about after an outage, which is standby power and the alarms that tell you something has stopped.",
         "All three are ordinary weekly work here rather than something we do occasionally. Lebanon and Lancaster counties run on poultry, dairy and grain, and the buildings in them have specific requirements that a crew working mostly in offices will not know to apply.",
