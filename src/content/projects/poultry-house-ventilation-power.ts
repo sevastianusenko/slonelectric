@@ -13,7 +13,7 @@ const project: Project = {
   photos: [
     {
       src: "/photos/projects/poultry-house-ventilation-power-1.webp",
-      alt: "Long poultry house interior with new lighting running the length of the building",
+      alt: "Tunnel ventilation fan mounted through the exterior wall of a poultry house",
     },
     {
       src: "/photos/projects/poultry-house-ventilation-power-2.webp",

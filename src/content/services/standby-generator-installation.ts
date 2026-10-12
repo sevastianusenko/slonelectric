@@ -48,6 +48,10 @@ const service: Service = {
     },
     {
       heading: "Transfer switches and fuel",
+      photo: {
+        src: "/photos/services/standby-generator-transfer-fuel.webp",
+        alt: "Meter socket and automatic transfer switch mounted on an exterior wall",
+      },
       body: [
         "The transfer switch is not an accessory. It is the part that decides whether the system works while nobody is there, and it is the part that keeps your generator from backfeeding a line a utility worker is holding. Automatic switches sense the outage, start the set, transfer, and transfer back with a cooldown run afterwards. Manual switches cost less and are defensible where somebody is always on site, but on a livestock building the failure mode is obvious: the outage happens at four in the morning and nobody throws the handle. Service entrance rated, open transition and closed transition switches all have their place, and the differences are set out in [transfer switch types](/blog/transfer-switch-types). A completed installation is shown in [this generator and transfer switch job](/projects/standby-generator-transfer-switch).",
         "Fuel usually decides itself by what is at the road. Natural gas needs no storage and never goes stale, but much of the countryside here has no gas main, and sets are typically rated slightly lower on natural gas than on LP. LP means a tank, and the tank has to be sized for vaporisation in cold weather rather than just gallons, because a small tank in January cannot deliver what a large engine wants. Diesel stores energy densely and starts strongly, but fuel ages, so it needs treatment, testing and a tank you can actually fill in a storm.",
@@ -55,6 +59,10 @@ const service: Service = {
     },
     {
       heading: "The farm case, and the maintenance that keeps a set startable",
+      photo: {
+        src: "/photos/services/standby-generator-farm-case.webp",
+        alt: "Standby generator and gas regulator installed beside a building",
+      },
       body: [
         "On a farm, standby power is not about convenience. Ventilation is the load that decides whether the barn still has stock in it by morning, and that is a different level of urgency from a dark office. It also changes the specification: the set has to pick up fan motors, the transfer has to be automatic, and the alarm has to reach a person. [A farm standby installation](/projects/farm-standby-generator) and [the ventilation power arrangement behind it](/projects/poultry-house-ventilation-power) show how those pieces fit together.",
         "A generator that is not exercised is a decoration. Batteries are the most common single reason a standby set fails to start, followed by fuel condition and coolant. An automatic weekly exercise cycle, a battery checked rather than assumed, filters and fluids on a schedule, and a transfer switch that has actually moved this year are what separate a working system from an expensive one. The intervals are in [what a generator needs and how often](/blog/generator-maintenance-schedule), and it can sit inside [a wider maintenance programme](/electrical-preventive-maintenance). We also repair and service sets we did not install, including transfer switches that have stopped transferring.",
