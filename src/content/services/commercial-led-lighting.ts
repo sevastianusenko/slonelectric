@@ -42,8 +42,8 @@ const service: Service = {
     {
       heading: "A barn needs a different fixture than a warehouse",
       photo: {
-        src: "/photos/projects/poultry-house-equipment-wiring-1.webp",
-        alt: "Curtain machine wiring along the ceiling of a poultry house aisle, cable tied and connected",
+        src: "/photos/services/commercial-led-lighting-barn-fixture.webp",
+        alt: "Sealed LED fixtures running the length of a poultry house aisle above the cage rows",
       },
       body: [
         "Ammonia is the first reason. In a poultry house or a bedded pack barn it attacks aluminium housings, creeps into the driver compartment and corrodes terminals from the inside. A high bay taken off a general commercial catalogue often lasts two or three years in that air and then starts failing one fixture at a time, which is the expensive way to find out.",
