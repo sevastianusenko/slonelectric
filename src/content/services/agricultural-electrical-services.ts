@@ -26,6 +26,10 @@ const service: Service = {
     },
     {
       heading: "Why the code is stricter in a barn",
+      photo: {
+        src: "/photos/services/agricultural-electrical-services-barn-interior.webp",
+        alt: "Interior of an old agricultural building with a failing roof and worn support posts",
+      },
       body: [
         "Agricultural buildings where livestock are housed, or where dust and a corrosive atmosphere are normal, fall under Article 547 of the National Electrical Code. It restricts wiring methods, requires enclosures and fittings that keep dust and washdown out, and in the areas where animals stand it requires an equipotential plane bonded into the concrete.",
         "That last one is the part that gets missed most often and costs most to correct, because it is decided at the concrete stage rather than the wiring stage. We go through the whole article in plain language in [what the code actually requires in a barn](/blog/nec-547-agricultural-wiring).",

@@ -293,7 +293,7 @@ export default async function ServicePage({
 
       {/* ── Текст вперемешку с кадрами: то же самое, подробно ───────── */}
       {s.sections.map((sec, i) => {
-        const photo = photoPool[i];
+        const photo = sec.photo ?? photoPool[i];
         const flip = i % 2 === 1;
         const paper = i % 2 === 1;
 

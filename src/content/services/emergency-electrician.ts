@@ -33,6 +33,10 @@ const service: Service = {
     },
     {
       heading: "When the air stops moving",
+      photo: {
+        src: "/photos/projects/poultry-house-new-construction-3.webp",
+        alt: "Tunnel ventilation fan mounted through the exterior wall of a poultry house",
+      },
       body: [
         "On a farm the clock is not measured in hours of lost trading, it is measured in animals. A tunnel ventilated poultry house on a hot afternoon has very little thermal margin once the fans stop, and extension guidance on emergency power for poultry production is consistent on the point: losses begin in minutes, not hours. A dairy has more time, but a parlour that cannot run still has a herd waiting and milk that has to stay cold.",
         "So a ventilation call is handled differently from a lighting call. We ask what has curtains, what can be opened, what the alarm did and whether the standby set tried to start. The useful thing to know meanwhile is that the fault is usually upstream of the fans: a controller, a contactor, a lost phase or a transfer switch that sat still. [Ventilation and controller power in a poultry house](/projects/poultry-house-ventilation-power) covers the arrangement, and the wider farm side is on [the agricultural page](/agricultural-electrical-services).",
@@ -56,6 +60,10 @@ const service: Service = {
     },
     {
       heading: "Most of these were visible months earlier",
+      photo: {
+        src: "/photos/projects/infrared-survey-switchboard-1.webp",
+        alt: "Thermal imaging camera in use during an electrical survey of live gear",
+      },
       body: [
         "A loose or oxidised connection does not fail suddenly. It runs a few degrees warm, oxidises a little more, runs warmer, then lets go on the coldest night or the hottest afternoon, because that is when the load is highest. Under a thermal camera it is obvious long before it is obvious to anyone else, which is the whole point of [a scanned switchboard](/projects/infrared-survey-switchboard) and why a yearly survey costs less than one call out.",
         "The same is true of standby equipment. Generators that are not exercised do not start, and transfer switches that have not moved in three years do not transfer. What that inspection involves is on [the preventive maintenance page](/electrical-preventive-maintenance), and [an account of one winter failure](/projects/emergency-winter-failure) describes the night when none of it was done.",
