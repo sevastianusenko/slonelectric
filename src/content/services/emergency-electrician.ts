@@ -57,6 +57,10 @@ const service: Service = {
     },
     {
       heading: "Lost phases, burned services and storms",
+      photo: {
+        src: "/photos/services/emergency-burned-service-storm.webp",
+        alt: "Burned and damaged service drop splice at a building, scorch marks visible on the wire and wall",
+      },
       body: [
         "Three failures make up most commercial and farm emergency calls. The first is a lost phase or a lost leg, which shows up as half a building working, single phase motors running and three phase motors humming, getting hot and stalling. Damage accumulates immediately, so isolating the motors is the first thing to do while help is on the way, and the diagnosis order is in [why a three phase motor will not start](/blog/three-phase-motor-wont-start).",
         "The second is the service entrance itself: a burned lug, a corroded meter socket, a mast pulled loose by ice or a branch. That work is coordinated with the utility, sometimes on the night and sometimes at first light, as in [rebuilding an overhead drop and service pole](/projects/service-pole-overhead-drop). The third is a storm. Lightning rarely destroys everything at once. It takes out a controller here, a drive there and a board in the dryer, and the failures surface over the following week. That is the argument for [surge protection at the service](/projects/surge-protection-service), which is cheap next to one controller.",
